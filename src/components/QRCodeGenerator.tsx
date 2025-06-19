@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
-import { useDebounce } from '../hooks/useDebounce';
 import { useFormState } from '../hooks/useFormState';
 import QRControls from './QRControls';
 import QRCodeDisplay from './QRCodeDisplay';
