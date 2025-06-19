@@ -4,60 +4,71 @@ import ErrorBoundary from './components/ErrorBoundary';
 function App() {
   return (
     <div className="container">
-      <h1>
-        <svg width="32" height="32" viewBox="0 0 32 32" className="qr-icon">
-          {/* Outer border */}
-          <rect
-            x="1"
-            y="1"
-            width="30"
-            height="30"
-            fill="none"
-            stroke="#2d3748"
-            strokeWidth="2"
-            rx="3"
-          />
+      <header role="banner">
+        <h1>
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            className="qr-icon"
+            aria-hidden="true"
+          >
+            {/* Outer border */}
+            <rect
+              x="1"
+              y="1"
+              width="30"
+              height="30"
+              fill="none"
+              stroke="#2d3748"
+              strokeWidth="2"
+              rx="3"
+            />
 
-          {/* Top-left corner square */}
-          <rect x="3" y="3" width="10" height="10" fill="#2d3748" rx="1" />
-          <rect x="5" y="5" width="6" height="6" fill="white" rx="1" />
-          <rect x="7" y="7" width="2" height="2" fill="#2d3748" />
+            {/* Top-left corner square */}
+            <rect x="3" y="3" width="10" height="10" fill="#2d3748" rx="1" />
+            <rect x="5" y="5" width="6" height="6" fill="white" rx="1" />
+            <rect x="7" y="7" width="2" height="2" fill="#2d3748" />
 
-          {/* Top-right corner square */}
-          <rect x="19" y="3" width="10" height="10" fill="#2d3748" rx="1" />
-          <rect x="21" y="5" width="6" height="6" fill="white" rx="1" />
-          <rect x="23" y="7" width="2" height="2" fill="#2d3748" />
+            {/* Top-right corner square */}
+            <rect x="19" y="3" width="10" height="10" fill="#2d3748" rx="1" />
+            <rect x="21" y="5" width="6" height="6" fill="white" rx="1" />
+            <rect x="23" y="7" width="2" height="2" fill="#2d3748" />
 
-          {/* Bottom-left corner square */}
-          <rect x="3" y="19" width="10" height="10" fill="#2d3748" rx="1" />
-          <rect x="5" y="21" width="6" height="6" fill="white" rx="1" />
-          <rect x="7" y="23" width="2" height="2" fill="#2d3748" />
+            {/* Bottom-left corner square */}
+            <rect x="3" y="19" width="10" height="10" fill="#2d3748" rx="1" />
+            <rect x="5" y="21" width="6" height="6" fill="white" rx="1" />
+            <rect x="7" y="23" width="2" height="2" fill="#2d3748" />
 
-          {/* Data pattern dots */}
-          <rect x="15" y="5" width="2" height="2" fill="#4a5568" />
-          <rect x="15" y="9" width="2" height="2" fill="#4a5568" />
-          <rect x="5" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="9" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="15" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="19" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="23" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="27" y="15" width="2" height="2" fill="#4a5568" />
-          <rect x="15" y="19" width="2" height="2" fill="#4a5568" />
-          <rect x="19" y="19" width="2" height="2" fill="#4a5568" />
-          <rect x="15" y="23" width="2" height="2" fill="#4a5568" />
-          <rect x="19" y="23" width="2" height="2" fill="#4a5568" />
-          <rect x="23" y="23" width="2" height="2" fill="#4a5568" />
-          <rect x="27" y="23" width="2" height="2" fill="#4a5568" />
-          <rect x="15" y="27" width="2" height="2" fill="#4a5568" />
-          <rect x="19" y="27" width="2" height="2" fill="#4a5568" />
-          <rect x="23" y="27" width="2" height="2" fill="#4a5568" />
-          <rect x="27" y="27" width="2" height="2" fill="#4a5568" />
-        </svg>
-        QR Code Generator (WIP)
-      </h1>
-      <ErrorBoundary>
-        <QRCodeGenerator />
-      </ErrorBoundary>
+            {/* Data pattern dots */}
+            <rect x="15" y="5" width="2" height="2" fill="#4a5568" />
+            <rect x="15" y="9" width="2" height="2" fill="#4a5568" />
+            <rect x="5" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="9" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="15" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="19" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="23" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="27" y="15" width="2" height="2" fill="#4a5568" />
+            <rect x="15" y="19" width="2" height="2" fill="#4a5568" />
+            <rect x="19" y="19" width="2" height="2" fill="#4a5568" />
+            <rect x="15" y="23" width="2" height="2" fill="#4a5568" />
+            <rect x="19" y="23" width="2" height="2" fill="#4a5568" />
+            <rect x="23" y="23" width="2" height="2" fill="#4a5568" />
+            <rect x="27" y="23" width="2" height="2" fill="#4a5568" />
+            <rect x="15" y="27" width="2" height="2" fill="#4a5568" />
+            <rect x="19" y="27" width="2" height="2" fill="#4a5568" />
+            <rect x="23" y="27" width="2" height="2" fill="#4a5568" />
+            <rect x="27" y="27" width="2" height="2" fill="#4a5568" />
+          </svg>
+          QR Code Generator
+        </h1>
+      </header>
+
+      <main role="main" aria-label="QR Code Generator Application">
+        <ErrorBoundary>
+          <QRCodeGenerator />
+        </ErrorBoundary>
+      </main>
     </div>
   );
 }

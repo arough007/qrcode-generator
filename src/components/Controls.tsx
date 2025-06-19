@@ -12,12 +12,26 @@ interface ControlsProps {
 const Controls: React.FC<ControlsProps> = ({ formState, formActions }) => {
   return (
     <div className="input-controls">
-      <QRTypeSelector
-        qrType={formState.qrType}
-        onTypeChange={formActions.setQrType}
-      />
+      <div role="group" aria-labelledby="qr-type-group-title">
+        <h3 id="qr-type-group-title" className="sr-only">
+          QR Code Type Selection
+        </h3>
+        <QRTypeSelector
+          qrType={formState.qrType}
+          onTypeChange={formActions.setQrType}
+        />
+      </div>
 
-      <div className="input-content-container">
+      <div
+        className="input-content-container"
+        role="group"
+        aria-labelledby="content-input-group-title"
+      >
+        <h3 id="content-input-group-title" className="sr-only">
+          {formState.qrType === 'text'
+            ? 'Text Content Input'
+            : 'Contact Information Input'}
+        </h3>
         {formState.qrType === 'text' ? (
           <div className="text-input-container">
             <TextInput

@@ -30,6 +30,20 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
   onDownload,
 }) => {
   const [selectedFormat, setSelectedFormat] = useState<DownloadFormat>('png');
+
+  // Helper function to generate QR code description for screen readers
+  const getQRCodeDescription = () => {
+    if (qrType === 'text') {
+      const content =
+        textInput.length > 50 ? `${textInput.substring(0, 50)}...` : textInput;
+      return `QR code containing text: ${content}`;
+    } else {
+      const { firstName, lastName, email, phone } = vcardData;
+      const name = `${firstName} ${lastName}`.trim();
+      const contact = email || phone || 'contact information';
+      return `QR code containing contact card for ${name || 'unnamed contact'} with ${contact}`;
+    }
+  };
   // Create a skeleton QR code using a dummy image
   const QRSkeleton = () => {
     const size = qrSettings.size;
@@ -78,10 +92,22 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
 
   return (
     <div className="output-section">
-      {error && <div className="error">{error}</div>}
+      {error && (
+        <div className="error" role="alert" aria-live="polite">
+          {error}
+        </div>
+      )}
       <div className="qr-output">
         <div className="qr-display-container">
-          <div className="qr-content">
+          <div
+            className="qr-content"
+            role="img"
+            aria-label={
+              showQRCode
+                ? getQRCodeDescription()
+                : 'QR code placeholder - enter content to generate QR code'
+            }
+          >
             <canvas
               ref={canvasRef}
               style={{
@@ -90,6 +116,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
                 height: 'auto',
                 margin: '0 auto',
               }}
+              aria-hidden={!showQRCode}
             />
             {!showQRCode && <QRSkeleton />}
           </div>

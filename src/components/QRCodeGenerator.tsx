@@ -40,24 +40,56 @@ const QRCodeGenerator: React.FC = () => {
   return (
     <div className="qr-generator">
       <div className="desktop-layout">
-        <div className="controls-panel">
+        <section
+          className="controls-panel"
+          aria-labelledby="input-section-title"
+          role="form"
+        >
+          <h2 id="input-section-title" className="sr-only">
+            QR Code Configuration
+          </h2>
           <Controls formState={formState} formActions={formActions} />
-        </div>
+        </section>
 
-        <div className="output-panel">
-          <QRCodeDisplay
-            canvasRef={canvasRef}
-            showQRCode={showQRCode}
-            error={error}
-            qrType={formState.qrType}
-            textInput={formState.textInput}
-            vcardData={formState.vcardData}
-            qrSettings={formState.qrSettings}
-            onDownload={downloadQRCode}
-          />
+        <section
+          className="output-panel"
+          aria-labelledby="output-section-title"
+        >
+          <h2 id="output-section-title" className="sr-only">
+            QR Code Output and Settings
+          </h2>
 
-          <QRControls formState={formState} formActions={formActions} />
-        </div>
+          <div
+            className="qr-output-area"
+            role="region"
+            aria-labelledby="qr-display-title"
+          >
+            <h3 id="qr-display-title" className="sr-only">
+              Generated QR Code
+            </h3>
+            <QRCodeDisplay
+              canvasRef={canvasRef}
+              showQRCode={showQRCode}
+              error={error}
+              qrType={formState.qrType}
+              textInput={formState.textInput}
+              vcardData={formState.vcardData}
+              qrSettings={formState.qrSettings}
+              onDownload={downloadQRCode}
+            />
+          </div>
+
+          <div
+            className="qr-controls-area"
+            role="region"
+            aria-labelledby="qr-controls-title"
+          >
+            <h3 id="qr-controls-title" className="sr-only">
+              QR Code Customization
+            </h3>
+            <QRControls formState={formState} formActions={formActions} />
+          </div>
+        </section>
       </div>
     </div>
   );
