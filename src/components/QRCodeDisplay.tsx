@@ -24,21 +24,22 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
     <div className="output-section">
       <h2>Generated QR Code</h2>
       {error && <div className="error">{error}</div>}
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
       <div className="qr-output">
+        <canvas
+          ref={canvasRef}
+          style={{ 
+            display: showQRCode ? 'block' : 'none', 
+            maxWidth: '100%', 
+            height: 'auto' 
+          }}
+        />
         {showQRCode ? (
-          <>
-            <canvas
-              ref={canvasRef}
-              style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
-            />
-            <button
-              onClick={() => onDownload(qrType, textInput, vcardData)}
-              className="download-btn"
-            >
-              Download QR Code
-            </button>
-          </>
+          <button
+            onClick={() => onDownload(qrType, textInput, vcardData)}
+            className="download-btn"
+          >
+            Download QR Code
+          </button>
         ) : (
           <div className="qr-placeholder">
             {/* Reserve space for QR code to prevent layout jump */}

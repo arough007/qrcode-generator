@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
 import { useDebounce } from '../hooks/useDebounce';
 import { useFormState } from '../hooks/useFormState';
 import QRControls from './QRControls';
 import QRCodeDisplay from './QRCodeDisplay';
+import { DEBOUNCE_DELAY } from '../constants';
 
 const QRCodeGenerator: React.FC = () => {
   const [formState, formActions] = useFormState();
@@ -29,7 +30,20 @@ const QRCodeGenerator: React.FC = () => {
   ]);
 
   // Debounced effect to regenerate QR code when inputs change
-  useDebounce(handleGeneration, [handleGeneration]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleGeneration();
+    }, DEBOUNCE_DELAY);
+
+    return () => clearTimeout(timer);
+  }, [
+    formState.qrType,
+    formState.textInput,
+    formState.vcardData,
+    formState.colors,
+    formState.qrSettings,
+    handleGeneration,
+  ]);
 
   return (
     <div className="qr-generator">
