@@ -13,38 +13,48 @@ interface QRControlsProps {
 
 const QRControls: React.FC<QRControlsProps> = ({ formState, formActions }) => {
   return (
-    <div className="controls-section">
-      <QRTypeSelector
-        qrType={formState.qrType}
-        onTypeChange={formActions.setQrType}
-      />
-
-      {formState.qrType === 'text' ? (
-        <TextInput
-          value={formState.textInput}
-          onChange={formActions.setTextInput}
+    <>
+      <div className="input-controls">
+        <QRTypeSelector
+          qrType={formState.qrType}
+          onTypeChange={formActions.setQrType}
         />
-      ) : (
-        <VCardForm
-          vcardData={formState.vcardData}
-          onDataChange={formActions.updateVcardData}
+
+        <div className="input-content-container">
+          {formState.qrType === 'text' ? (
+            <div className="text-input-container">
+              <TextInput
+                value={formState.textInput}
+                onChange={formActions.setTextInput}
+              />
+            </div>
+          ) : (
+            <div className="vcard-form">
+              <VCardForm
+                vcardData={formState.vcardData}
+                onDataChange={formActions.updateVcardData}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="qr-settings-controls">
+        <ColorControls
+          colors={formState.colors}
+          onColorChange={formActions.updateColors}
         />
-      )}
 
-      <ColorControls
-        colors={formState.colors}
-        onColorChange={formActions.updateColors}
-      />
-
-      <QRSettings
-        settings={formState.qrSettings}
-        onSettingsChange={formActions.updateQrSettings}
-        isExpanded={formState.settingsExpanded}
-        onToggleExpanded={() =>
-          formActions.setSettingsExpanded(!formState.settingsExpanded)
-        }
-      />
-    </div>
+        <QRSettings
+          settings={formState.qrSettings}
+          onSettingsChange={formActions.updateQrSettings}
+          isExpanded={formState.settingsExpanded}
+          onToggleExpanded={() =>
+            formActions.setSettingsExpanded(!formState.settingsExpanded)
+          }
+        />
+      </div>
+    </>
   );
 };
 
