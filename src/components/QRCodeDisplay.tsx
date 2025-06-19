@@ -1,5 +1,6 @@
-import React from 'react';
-import { QRType, VCardData, QRSettings } from '../types';
+import React, { useState } from 'react';
+import { QRType, VCardData, QRSettings, DownloadFormat } from '../types';
+import ExportOptions from './ExportOptions';
 
 interface QRCodeDisplayProps {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
@@ -9,7 +10,7 @@ interface QRCodeDisplayProps {
   textInput: string;
   vcardData: VCardData;
   qrSettings: QRSettings;
-  onDownload: (qrType: QRType, textInput: string, vcardData: VCardData) => void;
+  onDownload: (qrType: QRType, textInput: string, vcardData: VCardData, format: DownloadFormat) => void;
 }
 
 const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
@@ -22,6 +23,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
   qrSettings,
   onDownload,
 }) => {
+  const [selectedFormat, setSelectedFormat] = useState<DownloadFormat>('png');
   // Create a skeleton QR code using a dummy image
   const QRSkeleton = () => {
     const size = qrSettings.size;
@@ -85,18 +87,12 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
             />
             {!showQRCode && <QRSkeleton />}
           </div>
-          <button
-            onClick={() => onDownload(qrType, textInput, vcardData)}
-            className="download-btn"
+          <ExportOptions
+            selectedFormat={selectedFormat}
+            onFormatChange={setSelectedFormat}
+            onDownload={(format) => onDownload(qrType, textInput, vcardData, format)}
             disabled={!showQRCode}
-            title={
-              !showQRCode
-                ? 'Enter data first'
-                : 'Download the generated QR code'
-            }
-          >
-            Download QR Code
-          </button>
+          />
         </div>
       </div>
     </div>

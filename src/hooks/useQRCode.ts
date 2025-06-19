@@ -1,8 +1,9 @@
 import { useRef, useCallback, useState } from 'react';
 import QRCode from 'qrcode';
-import { VCardData, QRType, ColorOptions, QRSettings } from '../types';
+import { VCardData, QRType, ColorOptions, QRSettings, DownloadFormat } from '../types';
 import { QR_SCALE_FACTOR, ERROR_MESSAGES } from '../constants';
 import { hasVCardData, generateVCardString } from '../utils/vcard';
+import { exportQRCode } from '../utils/export';
 
 export const useQRCode = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -73,7 +74,7 @@ export const useQRCode = () => {
   );
 
   const downloadQRCode = useCallback(
-    (qrType: QRType, textInput: string, vcardData: VCardData) => {
+    async (qrType: QRType, textInput: string, vcardData: VCardData, format: DownloadFormat = 'png') => {
       // Check if there's data to download before attempting
       let hasData = false;
 
@@ -101,16 +102,8 @@ export const useQRCode = () => {
         // Clear any previous errors
         setError('');
 
-        const link = document.createElement('a');
-        const filename =
-          qrType === 'vcard' ? 'contact-qrcode.png' : 'qrcode.png';
-
-        link.download = filename;
-        link.href = canvasRef.current.toDataURL();
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const baseFilename = qrType === 'vcard' ? 'contact-qrcode' : 'qrcode';
+        await exportQRCode(canvasRef.current, format, baseFilename);
       } catch (error) {
         console.error('Error downloading QR code:', error);
         setError(ERROR_MESSAGES.DOWNLOAD_FAILED);
