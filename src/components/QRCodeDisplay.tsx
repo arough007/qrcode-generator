@@ -10,7 +10,12 @@ interface QRCodeDisplayProps {
   textInput: string;
   vcardData: VCardData;
   qrSettings: QRSettings;
-  onDownload: (qrType: QRType, textInput: string, vcardData: VCardData, format: DownloadFormat) => void;
+  onDownload: (
+    qrType: QRType,
+    textInput: string,
+    vcardData: VCardData,
+    format: DownloadFormat
+  ) => void;
 }
 
 const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
@@ -90,7 +95,9 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
           <ExportOptions
             selectedFormat={selectedFormat}
             onFormatChange={setSelectedFormat}
-            onDownload={(format) => onDownload(qrType, textInput, vcardData, format)}
+            onDownload={format =>
+              onDownload(qrType, textInput, vcardData, format)
+            }
             disabled={!showQRCode}
           />
         </div>

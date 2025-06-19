@@ -14,7 +14,11 @@ const ExportOptions: React.FC<ExportOptionsProps> = ({
   onDownload,
   disabled = false,
 }) => {
-  const formats: { value: DownloadFormat; label: string; description: string }[] = [
+  const formats: {
+    value: DownloadFormat;
+    label: string;
+    description: string;
+  }[] = [
     {
       value: 'png',
       label: 'PNG',
@@ -44,7 +48,7 @@ const ExportOptions: React.FC<ExportOptionsProps> = ({
       </div>
 
       <div className="format-grid">
-        {formats.map((format) => (
+        {formats.map(format => (
           <div
             key={format.value}
             className={`format-option ${
@@ -78,6 +82,4 @@ const ExportOptions: React.FC<ExportOptionsProps> = ({
   );
 };
 
-
-
-export default ExportOptions; 
+export default ExportOptions;

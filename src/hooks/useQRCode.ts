@@ -1,6 +1,12 @@
 import { useRef, useCallback, useState } from 'react';
 import QRCode from 'qrcode';
-import { VCardData, QRType, ColorOptions, QRSettings, DownloadFormat } from '../types';
+import {
+  VCardData,
+  QRType,
+  ColorOptions,
+  QRSettings,
+  DownloadFormat,
+} from '../types';
 import { QR_SCALE_FACTOR, ERROR_MESSAGES } from '../constants';
 import { hasVCardData, generateVCardString } from '../utils/vcard';
 import { exportQRCode } from '../utils/export';
@@ -74,7 +80,12 @@ export const useQRCode = () => {
   );
 
   const downloadQRCode = useCallback(
-    async (qrType: QRType, textInput: string, vcardData: VCardData, format: DownloadFormat = 'png') => {
+    async (
+      qrType: QRType,
+      textInput: string,
+      vcardData: VCardData,
+      format: DownloadFormat = 'png'
+    ) => {
       // Check if there's data to download before attempting
       let hasData = false;
 

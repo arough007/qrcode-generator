@@ -5,8 +5,9 @@ This QR code generator now supports multiple export formats with enhanced functi
 ## Supported Export Formats
 
 ### 1. PNG (Portable Network Graphics)
+
 - **Best for:** Web usage, presentations, and high-quality images
-- **Features:** 
+- **Features:**
   - Lossless compression
   - Transparency support
   - High quality
@@ -14,6 +15,7 @@ This QR code generator now supports multiple export formats with enhanced functi
 - **File extension:** `.png`
 
 ### 2. JPEG (Joint Photographic Experts Group)
+
 - **Best for:** Compressed images, email attachments, and smaller file sizes
 - **Features:**
   - Lossy compression (90% quality by default)
@@ -23,6 +25,7 @@ This QR code generator now supports multiple export formats with enhanced functi
 - **File extension:** `.jpg`
 
 ### 3. SVG (Scalable Vector Graphics)
+
 - **Best for:** Print materials, logos, and scalable graphics
 - **Features:**
   - Vector format - infinitely scalable
@@ -33,6 +36,7 @@ This QR code generator now supports multiple export formats with enhanced functi
 - **File extension:** `.svg`
 
 ### 4. PDF (Portable Document Format)
+
 - **Best for:** Professional documents, print-ready materials, and sharing
 - **Features:**
   - Document format ready for printing
@@ -47,11 +51,13 @@ This QR code generator now supports multiple export formats with enhanced functi
 ### Libraries Used
 
 1. **jsPDF** - For PDF generation
+
    - Widely used library with 28k+ GitHub stars
    - Excellent browser compatibility
    - Professional PDF creation capabilities
 
 2. **Canvas2SVG** - For SVG export
+
    - Converts HTML5 Canvas to SVG format
    - Maintains vector quality
    - Lightweight and efficient
@@ -197,4 +203,4 @@ src/
 - **Chrome**: Excellent performance and compatibility
 - **Edge**: Works well with all formats
 
-This export system provides professional-grade QR code generation with multiple format options to suit any use case, from web display to high-quality printing. 
+This export system provides professional-grade QR code generation with multiple format options to suit any use case, from web display to high-quality printing.
