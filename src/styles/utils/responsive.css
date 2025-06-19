@@ -1,0 +1,25 @@
+/* Responsive utilities and media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .vcard-grid,
+  .color-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .range-input {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .range-value {
+    text-align: center;
+  }
+} 
