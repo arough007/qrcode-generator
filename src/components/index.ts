@@ -4,3 +4,4 @@ export { default as TextInput } from './TextInput';
 export { default as VCardForm } from './VCardForm';
 export { default as ColorControls } from './ColorControls';
 export { default as QRCodeDisplay } from './QRCodeDisplay';
+export { default as QRSettings } from './QRSettings';

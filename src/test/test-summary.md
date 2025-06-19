@@ -14,12 +14,14 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 ### 1. Component Tests
 
 #### `TextInput.test.tsx`
+
 - ✅ Renders with correct label and placeholder
 - ✅ Displays the provided value
 - ✅ Calls onChange when text is entered
 - ✅ Handles multiple onChange calls
 
 #### `QRTypeSelector.test.tsx`
+
 - ✅ Renders with correct label and options
 - ✅ Displays the selected qrType value
 - ✅ Calls onTypeChange when selection changes to vcard
@@ -27,6 +29,7 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 - ✅ Renders with text selected by default
 
 #### `ColorControls.test.tsx`
+
 - ✅ Renders all color controls with correct labels
 - ✅ Displays current color values
 - ✅ Calls onColorChange when foreground color changes
@@ -37,6 +40,7 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 - ✅ Shows checkbox as checked when transparentBackground is true
 
 #### `QRCodeGenerator.test.tsx` (Integration Tests)
+
 - ✅ Renders all main components
 - ✅ Switches between text and vCard modes
 - ✅ Updates text input and maintains state
@@ -49,6 +53,7 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 ### 2. Hook Tests
 
 #### `useDebounce.test.ts`
+
 - ✅ Calls the callback after the default delay
 - ✅ Calls the callback after custom delay
 - ✅ Debounces multiple rapid changes
@@ -60,26 +65,31 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 The test suite covers:
 
 ### ✅ Component Rendering
+
 - All components render correctly with proper labels
 - Components display provided props/values
 - Conditional rendering based on state
 
 ### ✅ User Interactions
+
 - Form input changes (text, select, color, checkbox)
 - Event handlers are called with correct parameters
 - State updates reflect in the UI
 
 ### ✅ State Management
+
 - Component state is maintained correctly
 - Mode switching preserves separate state
 - Complex state interactions work as expected
 
 ### ✅ Hook Functionality
+
 - Debouncing works with default and custom delays
 - Timer resets on dependency changes
 - Cleanup on unmount prevents memory leaks
 
 ### ✅ Integration Testing
+
 - Full component tree renders correctly
 - Component interactions work together
 - State flows between components
@@ -112,4 +122,4 @@ npm run test:coverage
 - **Total Test Files**: 5
 - **Total Tests**: 30
 - **All Tests Passing**: ✅
-- **Test Coverage**: Comprehensive coverage of all components and hooks 
+- **Test Coverage**: Comprehensive coverage of all components and hooks

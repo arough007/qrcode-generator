@@ -1,6 +1,6 @@
 import { useRef, useCallback, useState } from 'react';
 import QRCode from 'qrcode';
-import { VCardData, QRType, ColorOptions } from '../types';
+import { VCardData, QRType, ColorOptions, QRSettings } from '../types';
 
 export const useQRCode = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -49,7 +49,8 @@ export const useQRCode = () => {
       qrType: QRType,
       textInput: string,
       vcardData: VCardData,
-      options: ColorOptions
+      options: ColorOptions,
+      qrSettings: QRSettings
     ) => {
       if (!canvasRef.current) return;
 
@@ -71,13 +72,14 @@ export const useQRCode = () => {
         }
 
         // Prepare QR code generation options
+        const scale = Math.round(qrSettings.size / 37.5); // Calculate scale based on desired size
         const qrOptions = {
-          errorCorrectionLevel: 'M' as const,
+          errorCorrectionLevel: qrSettings.errorCorrectionLevel,
           type: 'image/png' as const,
-          quality: 0.92,
-          margin: 1,
-          scale: 8,
-          width: 300,
+          quality: qrSettings.quality,
+          margin: qrSettings.margin,
+          scale: scale,
+          width: qrSettings.size,
           color: {
             dark: options.foregroundColor,
             light: options.transparentBackground

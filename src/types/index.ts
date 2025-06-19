@@ -16,3 +16,10 @@ export interface ColorOptions {
   backgroundColor: string;
   transparentBackground: boolean;
 }
+
+export interface QRSettings {
+  errorCorrectionLevel: 'L' | 'M' | 'Q' | 'H';
+  size: number;
+  margin: number;
+  quality: number;
+}

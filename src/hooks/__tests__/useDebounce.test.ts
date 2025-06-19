@@ -67,7 +67,7 @@ describe('useDebounce', () => {
 
     // Fast-forward to complete the delay
     vi.advanceTimersByTime(200);
-    
+
     // Should only be called once despite multiple changes
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
@@ -103,7 +103,7 @@ describe('useDebounce', () => {
 
     // Fast-forward partway through delay
     vi.advanceTimersByTime(300);
-    
+
     // Unmount component
     unmount();
 
@@ -112,4 +112,4 @@ describe('useDebounce', () => {
 
     expect(mockCallback).not.toHaveBeenCalled();
   });
-}); 
+});

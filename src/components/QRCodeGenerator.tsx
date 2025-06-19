@@ -1,5 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { VCardData, QRType, ColorOptions } from '../types';
+import {
+  VCardData,
+  QRType,
+  ColorOptions,
+  QRSettings as QRSettingsType,
+} from '../types';
 import { useQRCode } from '../hooks/useQRCode';
 import { useDebounce } from '../hooks/useDebounce';
 import QRTypeSelector from './QRTypeSelector';
@@ -7,6 +12,7 @@ import TextInput from './TextInput';
 import VCardForm from './VCardForm';
 import ColorControls from './ColorControls';
 import QRCodeDisplay from './QRCodeDisplay';
+import QRSettings from './QRSettings';
 
 const QRCodeGenerator: React.FC = () => {
   const [textInput, setTextInput] = useState('');
@@ -26,13 +32,20 @@ const QRCodeGenerator: React.FC = () => {
     backgroundColor: '#ffffff',
     transparentBackground: false,
   });
+  const [qrSettings, setQrSettings] = useState<QRSettingsType>({
+    errorCorrectionLevel: 'M',
+    size: 300,
+    margin: 1,
+    quality: 0.92,
+  });
+  const [settingsExpanded, setSettingsExpanded] = useState(false);
 
   const { canvasRef, showQRCode, error, generateQRCode, downloadQRCode } =
     useQRCode();
 
   const handleGeneration = useCallback(() => {
-    generateQRCode(qrType, textInput, vcardData, colors);
-  }, [generateQRCode, qrType, textInput, vcardData, colors]);
+    generateQRCode(qrType, textInput, vcardData, colors, qrSettings);
+  }, [generateQRCode, qrType, textInput, vcardData, colors, qrSettings]);
 
   // Debounced effect to regenerate QR code when inputs change
   useDebounce(handleGeneration, [handleGeneration]);
@@ -47,6 +60,13 @@ const QRCodeGenerator: React.FC = () => {
   const handleColorChange = useCallback(
     (field: keyof ColorOptions, value: string | boolean) => {
       setColors(prev => ({ ...prev, [field]: value }));
+    },
+    []
+  );
+
+  const handleQRSettingsChange = useCallback(
+    (field: keyof QRSettingsType, value: string | number) => {
+      setQrSettings(prev => ({ ...prev, [field]: value }));
     },
     []
   );
@@ -68,6 +88,13 @@ const QRCodeGenerator: React.FC = () => {
           )}
 
           <ColorControls colors={colors} onColorChange={handleColorChange} />
+
+          <QRSettings
+            settings={qrSettings}
+            onSettingsChange={handleQRSettingsChange}
+            isExpanded={settingsExpanded}
+            onToggleExpanded={() => setSettingsExpanded(!settingsExpanded)}
+          />
         </div>
 
         <QRCodeDisplay
