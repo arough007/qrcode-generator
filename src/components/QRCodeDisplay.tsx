@@ -70,7 +70,6 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
 
   return (
     <div className="output-section">
-      <h2>Generated QR Code</h2>
       {error && <div className="error">{error}</div>}
       <div className="qr-output">
         <div className="qr-display-container">
