@@ -17,6 +17,8 @@ A modern, responsive TypeScript web application for generating customizable QR c
 - **Vite** - Fast build tool and dev server
 - **QRCode Library** - Reliable QR code generation
 - **Modern CSS** - Beautiful, responsive design
+- **Vitest** - Fast unit testing framework
+- **React Testing Library** - Component testing utilities
 
 ## Getting Started
 
@@ -57,6 +59,20 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run type-check` - Run TypeScript type checking
+- `npm test` - Run test suite in watch mode
+- `npm run test:run` - Run tests once
+- `npm run test:coverage` - Run tests with coverage report
+
+## Testing
+
+This project includes a comprehensive test suite with 30+ tests covering:
+
+- **Component Tests**: All React components are thoroughly tested
+- **Hook Tests**: Custom hooks like `useDebounce` are fully covered
+- **Integration Tests**: End-to-end component interactions
+- **User Interaction Tests**: Realistic user behavior simulation
+
+The test suite uses Vitest and React Testing Library for fast, reliable testing with excellent developer experience.
 
 ## QR Code Options
 
@@ -76,7 +92,9 @@ The application supports various QR code features:
 
 ## License
 
-MIT License - feel free to use this project for personal or commercial purposes.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+The GPL v3 is a copyleft license that guarantees end users the freedom to run, study, share, and modify the software.
 
 ## Contributing
 
