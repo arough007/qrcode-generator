@@ -73,26 +73,28 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
       <h2>Generated QR Code</h2>
       {error && <div className="error">{error}</div>}
       <div className="qr-output">
-        <canvas
-          ref={canvasRef}
-          style={{ 
-            display: showQRCode ? 'block' : 'none', 
-            maxWidth: '100%', 
-            height: 'auto' 
-          }}
-        />
-        {showQRCode ? (
+        <div className="qr-display-container">
+          <div className="qr-content">
+            <canvas
+              ref={canvasRef}
+              style={{ 
+                display: showQRCode ? 'block' : 'none', 
+                maxWidth: '100%', 
+                height: 'auto',
+                margin: '0 auto'
+              }}
+            />
+            {!showQRCode && <QRSkeleton />}
+          </div>
           <button
             onClick={() => onDownload(qrType, textInput, vcardData)}
             className="download-btn"
+            disabled={!showQRCode}
+            title={!showQRCode ? "Enter data first" : "Download the generated QR code"}
           >
             Download QR Code
           </button>
-        ) : (
-          <div className="qr-placeholder">
-            <QRSkeleton />
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

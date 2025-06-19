@@ -4,12 +4,19 @@
   text-align: center;
 }
 
-.qr-placeholder {
-  /* Reserve space to prevent layout jump while QR code loads */
-  min-height: 200px; /* Approximate height of QR code + button */
+.qr-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* Reserve space to prevent layout jump */
+}
+
+.qr-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .qr-skeleton {
