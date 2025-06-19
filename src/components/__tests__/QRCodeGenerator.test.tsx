@@ -36,7 +36,14 @@ describe('QRCodeGenerator', () => {
     expect(screen.getByLabelText('Text or URL to encode:')).toBeInTheDocument();
     expect(screen.getByLabelText('QR Code Color')).toBeInTheDocument();
     expect(screen.getByLabelText('Background Color')).toBeInTheDocument();
-    expect(screen.getByText('Download QR Code')).toBeInTheDocument();
+
+    // Check that export options are present
+    expect(screen.getByText('Export Format')).toBeInTheDocument();
+    expect(screen.getByText('PNG')).toBeInTheDocument();
+    expect(screen.getByText('JPEG')).toBeInTheDocument();
+    expect(screen.getByText('SVG')).toBeInTheDocument();
+    expect(screen.getByText('PDF')).toBeInTheDocument();
+    expect(screen.getByText(/Download PNG/)).toBeInTheDocument();
   });
 
   it('switches between text and vCard modes', async () => {
