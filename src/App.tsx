@@ -4,7 +4,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 function App() {
   return (
     <div className="container">
-      <h1>🔳 QR Code Generator</h1>
+              <h1>🔳 QR Code Generator (WIP)</h1>
       <ErrorBoundary>
         <QRCodeGenerator />
       </ErrorBoundary>
