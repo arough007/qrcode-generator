@@ -6,4 +6,5 @@
 @import './styles/components/qr-display.css';
 @import './styles/components/qr-settings.css';
 @import './styles/components/error-boundary.css';
+@import './styles/components/ui.css';
 @import './styles/utils/responsive.css';
