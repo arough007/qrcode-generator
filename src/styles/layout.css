@@ -6,9 +6,10 @@
 
 .desktop-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(400px, 500px) minmax(400px, 500px);
+  gap: 20px;
   align-items: start;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
@@ -18,6 +19,11 @@
   gap: 20px;
   min-height: 400px;
   transition: all 0.3s ease;
+  align-self: start;
+}
+
+.controls-panel > *:first-child {
+  margin-top: 0;
 }
 
 .output-panel {
@@ -27,7 +33,8 @@
   justify-content: flex-start;
   min-height: 600px;
   transition: all 0.3s ease;
-  gap: 30px;
+  gap: 15px;
+  align-self: start;
 }
 
 .qr-generator {
@@ -57,6 +64,27 @@
   border: 2px solid #e9ecef;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+}
+
+.qr-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.qr-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.qr-skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .qr-canvas {
@@ -142,6 +170,11 @@
 .output-panel .output-section {
   width: 100%;
   max-width: 500px;
+}
+
+.output-panel .output-section h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 .output-panel .qr-output {
@@ -414,41 +447,65 @@
 @media (max-width: 900px) {
   .desktop-layout {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 0px;
   }
 
   .output-panel {
     min-height: auto;
-    order: -1;
-    gap: 20px;
+    order: 1;
+    gap: 5px;
   }
 
   .controls-panel {
-    order: 1;
+    order: -1;
+    gap: 5px;
+    min-height: auto;
+    margin-bottom: 20px;
   }
 
   .qr-controls {
     order: 1;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .color-controls-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .input-content-container {
+    min-height: auto;
+  }
+
+  .text-input-container {
+    min-height: auto;
+  }
+
+  .vcard-form {
+    min-height: auto;
+  }
+
+  .qr-output {
+    padding: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .desktop-layout {
-    gap: 20px;
+    gap: 0px;
+  }
+
+  .output-panel {
+    gap: 5px;
   }
 
   .controls-panel {
-    gap: 15px;
+    gap: 5px;
+    min-height: auto;
   }
 
   .qr-output {
-    padding: 20px;
+    padding: 15px;
   }
 
   .qr-placeholder {
@@ -504,7 +561,7 @@
 @media (max-width: 900px) {
   .output-panel .output-section h2 {
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   .controls-panel > * {
