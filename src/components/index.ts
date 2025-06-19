@@ -1,10 +1,10 @@
+export { default as ColorControls } from './ColorControls';
+export { default as Controls } from './Controls';
+export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as QRCodeDisplay } from './QRCodeDisplay';
 export { default as QRCodeGenerator } from './QRCodeGenerator';
+export { default as QRControls } from './QRControls';
+export { default as QRSettings } from './QRSettings';
 export { default as QRTypeSelector } from './QRTypeSelector';
 export { default as TextInput } from './TextInput';
 export { default as VCardForm } from './VCardForm';
-export { default as ColorControls } from './ColorControls';
-export { default as QRCodeDisplay } from './QRCodeDisplay';
-export { default as QRSettings } from './QRSettings';
-export { default as QRControls } from './QRControls';
-export { default as ErrorBoundary } from './ErrorBoundary';
-export { default as Controls } from './Controls';
