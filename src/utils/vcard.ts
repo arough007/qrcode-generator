@@ -1,4 +1,4 @@
-import { VCardData } from '../types';
+import { VCardData, VCardField, ValidationError, FormValidationResult } from '../types';
 
 /**
  * Validates if VCard data has at least one non-empty field
@@ -88,7 +88,7 @@ export const getVCardSummary = (vcardData: VCardData): string[] => {
 /**
  * Validates individual VCard field formats
  */
-export const validateVCardField = (field: keyof VCardData, value: string): boolean => {
+export const validateVCardField = (field: VCardField, value: string): boolean => {
   switch (field) {
     case 'email':
       return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -104,8 +104,8 @@ export const validateVCardField = (field: keyof VCardData, value: string): boole
 /**
  * Gets validation errors for VCard data
  */
-export const getVCardValidationErrors = (vcardData: VCardData): Record<keyof VCardData, string> => {
-  const errors: Record<keyof VCardData, string> = {
+export const getVCardValidationErrors = (vcardData: VCardData): Record<VCardField, string> => {
+  const errors: Record<VCardField, string> = {
     firstName: '',
     lastName: '',
     organization: '',
@@ -117,7 +117,7 @@ export const getVCardValidationErrors = (vcardData: VCardData): Record<keyof VCa
   };
 
   Object.entries(vcardData).forEach(([field, value]) => {
-    const fieldKey = field as keyof VCardData;
+    const fieldKey = field as VCardField;
     if (!validateVCardField(fieldKey, value)) {
       switch (fieldKey) {
         case 'email':
@@ -134,4 +134,23 @@ export const getVCardValidationErrors = (vcardData: VCardData): Record<keyof VCa
   });
 
   return errors;
+};
+
+/**
+ * Validates entire VCard form and returns structured result
+ */
+export const validateVCardForm = (vcardData: VCardData): FormValidationResult => {
+  const fieldErrors = getVCardValidationErrors(vcardData);
+  const errors: ValidationError[] = [];
+
+  Object.entries(fieldErrors).forEach(([field, message]) => {
+    if (message) {
+      errors.push({ field, message });
+    }
+  });
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
 }; 

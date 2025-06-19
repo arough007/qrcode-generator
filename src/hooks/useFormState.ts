@@ -1,5 +1,13 @@
 import { useState, useCallback } from 'react';
-import { VCardData, QRType, ColorOptions, QRSettings } from '../types';
+import { 
+  VCardData, 
+  QRType, 
+  ColorOptions, 
+  QRSettings,
+  VCardChangeHandler,
+  ColorChangeHandler,
+  QRSettingsChangeHandler
+} from '../types';
 import {
   VCARD_DEFAULTS,
   COLOR_DEFAULTS,
@@ -18,9 +26,9 @@ export interface FormState {
 export interface FormActions {
   setTextInput: (value: string) => void;
   setQrType: (type: QRType) => void;
-  updateVcardData: (field: keyof VCardData, value: string) => void;
-  updateColors: (field: keyof ColorOptions, value: any) => void;
-  updateQrSettings: (field: keyof QRSettings, value: any) => void;
+  updateVcardData: VCardChangeHandler;
+  updateColors: ColorChangeHandler;
+  updateQrSettings: QRSettingsChangeHandler;
   setSettingsExpanded: (expanded: boolean) => void;
   resetForm: () => void;
 }
@@ -45,21 +53,21 @@ export const useFormState = (): [FormState, FormActions] => {
     setState(prev => ({ ...prev, qrType: type }));
   }, []);
 
-  const updateVcardData = useCallback((field: keyof VCardData, value: string) => {
+  const updateVcardData = useCallback<VCardChangeHandler>((field, value) => {
     setState(prev => ({
       ...prev,
       vcardData: { ...prev.vcardData, [field]: value },
     }));
   }, []);
 
-  const updateColors = useCallback((field: keyof ColorOptions, value: any) => {
+  const updateColors = useCallback<ColorChangeHandler>((field, value) => {
     setState(prev => ({
       ...prev,
       colors: { ...prev.colors, [field]: value },
     }));
   }, []);
 
-  const updateQrSettings = useCallback((field: keyof QRSettings, value: any) => {
+  const updateQrSettings = useCallback<QRSettingsChangeHandler>((field, value) => {
     setState(prev => ({
       ...prev,
       qrSettings: { ...prev.qrSettings, [field]: value },
