@@ -27,6 +27,11 @@ export const useQRCode = () => {
 
         let text = '';
         if (qrType === 'vcard') {
+          // Check if there's actual VCard data before generating
+          if (!hasVCardData(vcardData)) {
+            setShowQRCode(false);
+            return;
+          }
           text = generateVCardString(vcardData);
         } else {
           text = textInput.trim();
