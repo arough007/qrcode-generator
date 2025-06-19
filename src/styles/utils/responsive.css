@@ -1,7 +1,17 @@
 /* Responsive utilities and media queries */
+
+/* Medium screens and below - single column for better readability */
+@media (max-width: 900px) {
+  .vcard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 20px;
+    width: 100%; /* Allow container to be responsive on mobile */
+    max-width: 700px; /* But still cap it at 700px */
   }
 
   h1 {

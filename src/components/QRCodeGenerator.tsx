@@ -33,7 +33,6 @@ const QRCodeGenerator: React.FC = () => {
 
   return (
     <div className="qr-generator">
-      <h1>QR Code Generator</h1>
       <div className="content">
         <QRControls formState={formState} formActions={formActions} />
 

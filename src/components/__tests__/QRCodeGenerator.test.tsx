@@ -31,11 +31,12 @@ describe('QRCodeGenerator', () => {
   it('renders all main components', () => {
     render(<QRCodeGenerator />);
 
-    expect(screen.getByText('QR Code Generator')).toBeInTheDocument();
+    // Check that main form controls are present
     expect(screen.getByLabelText('QR Code Type:')).toBeInTheDocument();
     expect(screen.getByLabelText('Text or URL to encode:')).toBeInTheDocument();
     expect(screen.getByLabelText('QR Code Color:')).toBeInTheDocument();
     expect(screen.getByLabelText('Background Color:')).toBeInTheDocument();
+    expect(screen.getByText('Generated QR Code')).toBeInTheDocument();
   });
 
   it('switches between text and vCard modes', async () => {
