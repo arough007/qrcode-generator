@@ -317,11 +317,6 @@ class QRCodeGenerator {
 }
 
 // Initialize the application when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  new QRCodeGenerator();
-});
-
-// Also initialize if DOM is already loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new QRCodeGenerator();
