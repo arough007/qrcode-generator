@@ -52,14 +52,6 @@ This document outlines the comprehensive test suite for the QR Code Generator Re
 
 ### 2. Hook Tests
 
-#### `useDebounce.test.ts`
-
-- ✅ Calls the callback after the default delay
-- ✅ Calls the callback after custom delay
-- ✅ Debounces multiple rapid changes
-- ✅ Resets timer when dependencies change
-- ✅ Does not call callback if component unmounts before delay
-
 ## Test Coverage
 
 The test suite covers:
@@ -84,9 +76,8 @@ The test suite covers:
 
 ### ✅ Hook Functionality
 
-- Debouncing works with default and custom delays
-- Timer resets on dependency changes
-- Cleanup on unmount prevents memory leaks
+- Custom hooks manage state and side effects correctly
+- QR code generation and form state management work as expected
 
 ### ✅ Integration Testing
 
@@ -119,7 +110,7 @@ npm run test:coverage
 
 ## Test Statistics
 
-- **Total Test Files**: 5
-- **Total Tests**: 30
+- **Total Test Files**: 4
+- **Total Tests**: 25
 - **All Tests Passing**: ✅
 - **Test Coverage**: Comprehensive coverage of all components and hooks

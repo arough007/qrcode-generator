@@ -92,7 +92,7 @@ npm run dev
 This project includes a comprehensive test suite with 47 tests covering:
 
 - **Component Tests**: All React components are thoroughly tested
-- **Hook Tests**: Custom hooks like `useDebounce` are fully covered
+- **Hook Tests**: Custom hooks are fully covered
 - **Integration Tests**: End-to-end component interactions
 - **User Interaction Tests**: Realistic user behavior simulation
 - **Modal Functionality**: Advanced settings modal behavior and accessibility
@@ -114,7 +114,7 @@ This project follows modern React best practices with a well-organized, maintain
 
 ### 🏗️ **Key Patterns**
 
-- **Custom Hooks**: `useFormState`, `useQRCode`, `useDebounce`
+- **Custom Hooks**: `useFormState`, `useQRCode`
 - **Error Boundaries**: Graceful error handling and recovery
 - **Modular CSS**: Component-based stylesheets for maintainability
 - **Type Safety**: Enhanced TypeScript with specific types and validation

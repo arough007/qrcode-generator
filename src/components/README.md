@@ -48,12 +48,6 @@ This QR Code Generator has been refactored into smaller, reusable components fol
 - **Returns**: Canvas ref, state, and methods for generating/downloading QR codes
 - **Benefits**: Reusable logic, separation of concerns
 
-### useDebounce
-
-- **Purpose**: Generic debouncing hook for performance optimization
-- **Parameters**: `callback`, `dependencies`, `delay`
-- **Benefits**: Prevents excessive API calls during rapid input changes
-
 ## Benefits of This Architecture
 
 1. **Modularity**: Each component has a single responsibility
