@@ -25,4 +25,4 @@ const QRTypeSelector: React.FC<QRTypeSelectorProps> = ({
   );
 };
 
-export default QRTypeSelector; 
+export default QRTypeSelector;

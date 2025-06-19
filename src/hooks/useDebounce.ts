@@ -9,4 +9,4 @@ export const useDebounce = (
     const timer = setTimeout(callback, delay);
     return () => clearTimeout(timer);
   }, dependencies);
-}; 
+};

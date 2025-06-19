@@ -15,4 +15,4 @@ export interface ColorOptions {
   foregroundColor: string;
   backgroundColor: string;
   transparentBackground: boolean;
-} 
+}

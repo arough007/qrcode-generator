@@ -54,6 +54,7 @@ export const useQRCode = () => {
       if (!canvasRef.current) return;
 
       try {
+        // Clear any previous errors
         setError('');
 
         let text = '';
@@ -63,12 +64,8 @@ export const useQRCode = () => {
           text = textInput.trim();
         }
 
+        // Don't show error during generation, just don't generate if empty
         if (!text) {
-          const errorMessage =
-            qrType === 'vcard'
-              ? 'Please fill in at least one contact field to generate a vCard QR code.'
-              : 'Please enter some text to generate a QR code.';
-          setError(errorMessage);
           setShowQRCode(false);
           return;
         }
@@ -96,31 +93,61 @@ export const useQRCode = () => {
         setShowQRCode(true);
       } catch (error) {
         console.error('Error generating QR code:', error);
-        setError('Failed to generate QR code. Please try again.');
+        // Don't show generation errors to user, just hide QR code
         setShowQRCode(false);
       }
     },
     []
   );
 
-  const downloadQRCode = useCallback((qrType: QRType) => {
-    if (!canvasRef.current) return;
+  const downloadQRCode = useCallback(
+    (qrType: QRType, textInput: string, vcardData: VCardData) => {
+      // Check if there's data to download before attempting
+      let hasData = false;
 
-    try {
-      const link = document.createElement('a');
-      const filename = qrType === 'vcard' ? 'contact-qrcode.png' : 'qrcode.png';
+      if (qrType === 'vcard') {
+        hasData = Object.values(vcardData).some(value => value.trim() !== '');
+      } else {
+        hasData = textInput.trim() !== '';
+      }
 
-      link.download = filename;
-      link.href = canvasRef.current.toDataURL();
+      if (!hasData) {
+        const errorMessage =
+          qrType === 'vcard'
+            ? 'Please fill in at least one contact field before downloading.'
+            : 'Please enter some text before downloading.';
+        setError(errorMessage);
+        return;
+      }
 
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('Error downloading QR code:', error);
-      setError('Failed to download QR code. Please try again.');
-    }
-  }, []);
+      if (!canvasRef.current || !showQRCode) {
+        setError(
+          'No QR code available to download. Please generate a QR code first.'
+        );
+        return;
+      }
+
+      try {
+        // Clear any previous errors
+        setError('');
+
+        const link = document.createElement('a');
+        const filename =
+          qrType === 'vcard' ? 'contact-qrcode.png' : 'qrcode.png';
+
+        link.download = filename;
+        link.href = canvasRef.current.toDataURL();
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (error) {
+        console.error('Error downloading QR code:', error);
+        setError('Failed to download QR code. Please try again.');
+      }
+    },
+    [showQRCode]
+  );
 
   return {
     canvasRef,
@@ -130,4 +157,4 @@ export const useQRCode = () => {
     downloadQRCode,
     setShowQRCode,
   };
-}; 
+};

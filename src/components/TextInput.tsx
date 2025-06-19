@@ -19,4 +19,4 @@ const TextInput: React.FC<TextInputProps> = ({ value, onChange }) => {
   );
 };
 
-export default TextInput; 
+export default TextInput;

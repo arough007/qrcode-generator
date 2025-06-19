@@ -27,7 +27,8 @@ const QRCodeGenerator: React.FC = () => {
     transparentBackground: false,
   });
 
-  const { canvasRef, showQRCode, error, generateQRCode, downloadQRCode } = useQRCode();
+  const { canvasRef, showQRCode, error, generateQRCode, downloadQRCode } =
+    useQRCode();
 
   const handleGeneration = useCallback(() => {
     generateQRCode(qrType, textInput, vcardData, colors);
@@ -36,13 +37,19 @@ const QRCodeGenerator: React.FC = () => {
   // Debounced effect to regenerate QR code when inputs change
   useDebounce(handleGeneration, [handleGeneration]);
 
-  const handleVcardDataChange = useCallback((field: keyof VCardData, value: string) => {
-    setVcardData(prev => ({ ...prev, [field]: value }));
-  }, []);
+  const handleVcardDataChange = useCallback(
+    (field: keyof VCardData, value: string) => {
+      setVcardData(prev => ({ ...prev, [field]: value }));
+    },
+    []
+  );
 
-  const handleColorChange = useCallback((field: keyof ColorOptions, value: string | boolean) => {
-    setColors(prev => ({ ...prev, [field]: value }));
-  }, []);
+  const handleColorChange = useCallback(
+    (field: keyof ColorOptions, value: string | boolean) => {
+      setColors(prev => ({ ...prev, [field]: value }));
+    },
+    []
+  );
 
   return (
     <div className="qr-generator">
@@ -54,7 +61,10 @@ const QRCodeGenerator: React.FC = () => {
           {qrType === 'text' ? (
             <TextInput value={textInput} onChange={setTextInput} />
           ) : (
-            <VCardForm vcardData={vcardData} onDataChange={handleVcardDataChange} />
+            <VCardForm
+              vcardData={vcardData}
+              onDataChange={handleVcardDataChange}
+            />
           )}
 
           <ColorControls colors={colors} onColorChange={handleColorChange} />
@@ -65,6 +75,8 @@ const QRCodeGenerator: React.FC = () => {
           showQRCode={showQRCode}
           error={error}
           qrType={qrType}
+          textInput={textInput}
+          vcardData={vcardData}
           onDownload={downloadQRCode}
         />
       </div>

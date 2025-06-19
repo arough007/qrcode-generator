@@ -39,7 +39,9 @@ const ColorControls: React.FC<ColorControlsProps> = ({
           type="checkbox"
           id="transparentBackground"
           checked={colors.transparentBackground}
-          onChange={e => onColorChange('transparentBackground', e.target.checked)}
+          onChange={e =>
+            onColorChange('transparentBackground', e.target.checked)
+          }
         />
         <label htmlFor="transparentBackground">
           Use transparent background
@@ -49,4 +51,4 @@ const ColorControls: React.FC<ColorControlsProps> = ({
   );
 };
 
-export default ColorControls; 
+export default ColorControls;

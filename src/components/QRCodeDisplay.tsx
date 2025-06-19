@@ -1,12 +1,14 @@
 import React from 'react';
-import { QRType } from '../types';
+import { QRType, VCardData } from '../types';
 
 interface QRCodeDisplayProps {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
   showQRCode: boolean;
   error: string;
   qrType: QRType;
-  onDownload: (qrType: QRType) => void;
+  textInput: string;
+  vcardData: VCardData;
+  onDownload: (qrType: QRType, textInput: string, vcardData: VCardData) => void;
 }
 
 const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
@@ -14,6 +16,8 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
   showQRCode,
   error,
   qrType,
+  textInput,
+  vcardData,
   onDownload,
 }) => {
   return (
@@ -27,7 +31,10 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
             ref={canvasRef}
             style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
           />
-          <button onClick={() => onDownload(qrType)} className="download-btn">
+          <button
+            onClick={() => onDownload(qrType, textInput, vcardData)}
+            className="download-btn"
+          >
             Download QR Code
           </button>
         </div>
@@ -36,4 +43,4 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
   );
 };
 
-export default QRCodeDisplay; 
+export default QRCodeDisplay;

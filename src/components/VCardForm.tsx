@@ -95,4 +95,4 @@ const VCardForm: React.FC<VCardFormProps> = ({ vcardData, onDataChange }) => {
   );
 };
 
-export default VCardForm; 
+export default VCardForm;
