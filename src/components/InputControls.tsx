@@ -9,7 +9,10 @@ interface InputControlsProps {
   formActions: FormActions;
 }
 
-const InputControls: React.FC<InputControlsProps> = ({ formState, formActions }) => {
+const InputControls: React.FC<InputControlsProps> = ({
+  formState,
+  formActions,
+}) => {
   return (
     <div className="input-controls">
       <QRTypeSelector
@@ -38,4 +41,4 @@ const InputControls: React.FC<InputControlsProps> = ({ formState, formActions })
   );
 };
 
-export default InputControls; 
+export default InputControls;

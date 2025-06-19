@@ -9,8 +9,6 @@ export const useQRCode = () => {
   const [showQRCode, setShowQRCode] = useState(false);
   const [error, setError] = useState('');
 
-
-
   const generateQRCode = useCallback(
     async (
       qrType: QRType,

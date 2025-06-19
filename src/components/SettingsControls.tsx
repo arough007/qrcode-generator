@@ -8,7 +8,10 @@ interface SettingsControlsProps {
   formActions: FormActions;
 }
 
-const SettingsControls: React.FC<SettingsControlsProps> = ({ formState, formActions }) => {
+const SettingsControls: React.FC<SettingsControlsProps> = ({
+  formState,
+  formActions,
+}) => {
   return (
     <div className="qr-settings-controls">
       <ColorControls
@@ -28,4 +31,4 @@ const SettingsControls: React.FC<SettingsControlsProps> = ({ formState, formActi
   );
 };
 
-export default SettingsControls; 
+export default SettingsControls;
