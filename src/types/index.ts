@@ -2,14 +2,14 @@
 export type QRType = 'text' | 'vcard';
 
 // VCard field constraints
-export type VCardField = 
-  | 'firstName' 
-  | 'lastName' 
-  | 'organization' 
-  | 'title' 
-  | 'phone' 
-  | 'email' 
-  | 'website' 
+export type VCardField =
+  | 'firstName'
+  | 'lastName'
+  | 'organization'
+  | 'title'
+  | 'phone'
+  | 'email'
+  | 'website'
   | 'address';
 
 export interface VCardData {
@@ -44,8 +44,14 @@ export interface QRSettings {
 
 // Event handler types
 export type VCardChangeHandler = (field: VCardField, value: string) => void;
-export type ColorChangeHandler = (field: keyof ColorOptions, value: string | boolean) => void;
-export type QRSettingsChangeHandler = (field: keyof QRSettings, value: string | number) => void;
+export type ColorChangeHandler = (
+  field: keyof ColorOptions,
+  value: string | boolean
+) => void;
+export type QRSettingsChangeHandler = (
+  field: keyof QRSettings,
+  value: string | number
+) => void;
 
 // API response types (for future use)
 export interface QRCodeGenerationResult {

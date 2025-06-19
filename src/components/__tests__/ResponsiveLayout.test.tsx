@@ -35,20 +35,21 @@ describe('Responsive Layout', () => {
   it('maintains consistent container width when switching QR types', async () => {
     const user = userEvent.setup();
     const { container } = render(<QRCodeGenerator />);
-    
+
     // In test environment, we look for the rendered component structure
-    const qrGenerator = container.querySelector('.qr-generator') || container.firstElementChild;
+    const qrGenerator =
+      container.querySelector('.qr-generator') || container.firstElementChild;
     const typeSelector = screen.getByLabelText('QR Code Type:');
-    
+
     // Get initial width in text mode
     const initialWidth = qrGenerator?.getBoundingClientRect().width || 0;
-    
+
     // Switch to vCard mode
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Get width after switching to vCard
     const vCardWidth = qrGenerator?.getBoundingClientRect().width || 0;
-    
+
     // Widths should be the same (allowing for small rounding differences)
     // In test environment, both might be 0, which is acceptable
     expect(Math.abs(vCardWidth - initialWidth)).toBeLessThan(1);
@@ -61,18 +62,20 @@ describe('Responsive Layout', () => {
       configurable: true,
       value: 800,
     });
-    
+
     const user = userEvent.setup();
     render(<QRCodeGenerator />);
-    
+
     // Switch to vCard mode to show the grid
     const typeSelector = screen.getByLabelText('QR Code Type:');
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Check if vCard grid exists
-    const vCardForm = screen.getByLabelText('First Name:').closest('.vcard-grid');
+    const vCardForm = screen
+      .getByLabelText('First Name:')
+      .closest('.vcard-grid');
     expect(vCardForm).toBeInTheDocument();
-    
+
     // On medium screens, grid should have single column styling
     // We can't directly test CSS grid columns, but we can check that the element exists
     // and has the expected class
@@ -82,27 +85,31 @@ describe('Responsive Layout', () => {
   it('prevents horizontal overflow in vCard mode', async () => {
     const user = userEvent.setup();
     const { container } = render(<QRCodeGenerator />);
-    
+
     // Switch to vCard mode
     const typeSelector = screen.getByLabelText('QR Code Type:');
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Fill in all vCard fields with long text to test overflow
-    const longText = 'This is a very long text that might cause overflow issues if the layout is not properly constrained';
-    
+    const longText =
+      'This is a very long text that might cause overflow issues if the layout is not properly constrained';
+
     await user.type(screen.getByLabelText('First Name:'), longText);
     await user.type(screen.getByLabelText('Last Name:'), longText);
     await user.type(screen.getByLabelText('Organization:'), longText);
     await user.type(screen.getByLabelText('Job Title:'), longText);
     await user.type(screen.getByLabelText('Email:'), `${longText}@example.com`);
-    await user.type(screen.getByLabelText('Website:'), `https://${longText}.com`);
+    await user.type(
+      screen.getByLabelText('Website:'),
+      `https://${longText}.com`
+    );
     await user.type(screen.getByLabelText('Phone:'), '1234567890123456789');
     await user.type(screen.getByLabelText('Address:'), longText);
-    
+
     // Check that container doesn't exceed its bounds
     const qrGenerator = container.querySelector('.qr-generator');
     const containerRect = qrGenerator?.getBoundingClientRect();
-    
+
     // The container should not be excessively wide
     // (This is a basic check - in a real browser test, we'd check against viewport)
     expect(containerRect?.width).toBeLessThan(2000); // Reasonable upper bound
@@ -111,44 +118,46 @@ describe('Responsive Layout', () => {
   it('maintains form functionality after layout changes', async () => {
     const user = userEvent.setup();
     render(<QRCodeGenerator />);
-    
+
     // Test text mode
     const textInput = screen.getByLabelText('Text or URL to encode:');
     await user.type(textInput, 'Test text');
     expect(textInput).toHaveValue('Test text');
-    
+
     // Switch to vCard mode
     const typeSelector = screen.getByLabelText('QR Code Type:');
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Test vCard form functionality
     const firstNameInput = screen.getByLabelText('First Name:');
     await user.type(firstNameInput, 'John');
     expect(firstNameInput).toHaveValue('John');
-    
+
     // Switch back to text mode
     await user.selectOptions(typeSelector, 'text');
-    
+
     // Text should still be there
-    expect(screen.getByLabelText('Text or URL to encode:')).toHaveValue('Test text');
+    expect(screen.getByLabelText('Text or URL to encode:')).toHaveValue(
+      'Test text'
+    );
   });
 
   it('handles rapid type switching without layout issues', async () => {
     const user = userEvent.setup();
     const { container } = render(<QRCodeGenerator />);
-    
+
     const typeSelector = screen.getByLabelText('QR Code Type:');
     const qrGenerator = container.querySelector('.qr-generator');
-    
+
     // Record initial width
     const initialWidth = qrGenerator?.getBoundingClientRect().width;
-    
+
     // Rapidly switch between modes multiple times
     for (let i = 0; i < 5; i++) {
       await user.selectOptions(typeSelector, 'vcard');
       await user.selectOptions(typeSelector, 'text');
     }
-    
+
     // Width should remain consistent
     const finalWidth = qrGenerator?.getBoundingClientRect().width;
     expect(Math.abs((finalWidth || 0) - (initialWidth || 0))).toBeLessThan(1);
@@ -157,17 +166,17 @@ describe('Responsive Layout', () => {
   it('ensures all form elements fit within container bounds', async () => {
     const user = userEvent.setup();
     const { container } = render(<QRCodeGenerator />);
-    
+
     // Switch to vCard mode (more complex layout)
     const typeSelector = screen.getByLabelText('QR Code Type:');
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Get all form inputs
     const inputs = container.querySelectorAll('input, textarea, select');
-    
+
     // Check that all inputs exist and are properly rendered
     expect(inputs.length).toBeGreaterThan(0);
-    
+
     // In test environment, just verify the inputs are present and accessible
     inputs.forEach(input => {
       expect(input).toBeInTheDocument();
@@ -177,24 +186,26 @@ describe('Responsive Layout', () => {
   it('vCard grid has proper CSS classes and structure', async () => {
     const user = userEvent.setup();
     const { container } = render(<QRCodeGenerator />);
-    
+
     // Switch to vCard mode
     const typeSelector = screen.getByLabelText('QR Code Type:');
     await user.selectOptions(typeSelector, 'vcard');
-    
+
     // Find the vCard grid - it should exist and have the right class
     const vCardGrid = container.querySelector('.vcard-grid');
     expect(vCardGrid).toBeInTheDocument();
     expect(vCardGrid).toHaveClass('vcard-grid');
-    
+
     // Check that vCard form fields are present (indicating the grid is being used)
     expect(screen.getByLabelText('First Name:')).toBeInTheDocument();
     expect(screen.getByLabelText('Last Name:')).toBeInTheDocument();
     expect(screen.getByLabelText('Email:')).toBeInTheDocument();
     expect(screen.getByLabelText('Phone:')).toBeInTheDocument();
-    
+
     // Ensure all form fields are contained within the grid
-    const formFields = container.querySelectorAll('.vcard-grid input, .vcard-grid textarea');
+    const formFields = container.querySelectorAll(
+      '.vcard-grid input, .vcard-grid textarea'
+    );
     expect(formFields.length).toBeGreaterThan(0);
   });
-}); 
+});

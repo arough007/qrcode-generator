@@ -58,4 +58,4 @@ const QRControls: React.FC<QRControlsProps> = ({ formState, formActions }) => {
   );
 };
 
-export default QRControls; 
+export default QRControls;

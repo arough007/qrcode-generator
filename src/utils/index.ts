@@ -1,1 +1,1 @@
-export * from './vcard'; 
+export * from './vcard';

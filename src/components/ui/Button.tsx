@@ -26,19 +26,16 @@ const Button: React.FC<ButtonProps> = ({
   const widthClass = fullWidth ? 'btn-full-width' : '';
   const loadingClass = loading ? 'btn-loading' : '';
   const disabledClass = disabled || loading ? 'btn-disabled' : '';
-  
-  const classes = `${baseClasses} ${variantClass} ${sizeClass} ${widthClass} ${loadingClass} ${disabledClass} ${className}`.trim();
+
+  const classes =
+    `${baseClasses} ${variantClass} ${sizeClass} ${widthClass} ${loadingClass} ${disabledClass} ${className}`.trim();
 
   return (
-    <button
-      className={classes}
-      disabled={disabled || loading}
-      {...props}
-    >
+    <button className={classes} disabled={disabled || loading} {...props}>
       {loading && <span className="btn-spinner">⏳</span>}
       {children}
     </button>
   );
 };
 
-export default Button; 
+export default Button;
