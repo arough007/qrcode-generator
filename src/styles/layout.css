@@ -101,13 +101,7 @@
    Settings & Controls Layout
    ========================================================================== */
 
-.output-settings {
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+/* Settings are now integrated into controls panel */
 
 .output-panel .output-section {
   width: 100%;
@@ -200,9 +194,7 @@
     order: 1;
   }
 
-  .output-settings {
-    order: 2;
-  }
+
 
   .color-controls {
     justify-content: center;

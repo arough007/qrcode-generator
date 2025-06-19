@@ -7,3 +7,4 @@ export { default as QRCodeDisplay } from './QRCodeDisplay';
 export { default as QRSettings } from './QRSettings';
 export { default as QRControls } from './QRControls';
 export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as Controls } from './Controls';
