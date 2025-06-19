@@ -2,12 +2,8 @@ import React, { useCallback } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
 import { useDebounce } from '../hooks/useDebounce';
 import { useFormState } from '../hooks/useFormState';
-import QRTypeSelector from './QRTypeSelector';
-import TextInput from './TextInput';
-import VCardForm from './VCardForm';
-import ColorControls from './ColorControls';
+import QRControls from './QRControls';
 import QRCodeDisplay from './QRCodeDisplay';
-import QRSettings from './QRSettings';
 
 const QRCodeGenerator: React.FC = () => {
   const [formState, formActions] = useFormState();
@@ -39,27 +35,7 @@ const QRCodeGenerator: React.FC = () => {
     <div className="qr-generator">
       <h1>QR Code Generator</h1>
       <div className="content">
-        <div className="controls-section">
-          <QRTypeSelector qrType={formState.qrType} onTypeChange={formActions.setQrType} />
-
-          {formState.qrType === 'text' ? (
-            <TextInput value={formState.textInput} onChange={formActions.setTextInput} />
-          ) : (
-            <VCardForm
-              vcardData={formState.vcardData}
-              onDataChange={formActions.updateVcardData}
-            />
-          )}
-
-          <ColorControls colors={formState.colors} onColorChange={formActions.updateColors} />
-
-          <QRSettings
-            settings={formState.qrSettings}
-            onSettingsChange={formActions.updateQrSettings}
-            isExpanded={formState.settingsExpanded}
-            onToggleExpanded={() => formActions.setSettingsExpanded(!formState.settingsExpanded)}
-          />
-        </div>
+        <QRControls formState={formState} formActions={formActions} />
 
         <QRCodeDisplay
           canvasRef={canvasRef}
