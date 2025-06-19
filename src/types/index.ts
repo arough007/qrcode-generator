@@ -61,7 +61,7 @@ export interface QRCodeGenerationResult {
 }
 
 // File download types
-export type DownloadFormat = 'png' | 'jpg' | 'svg';
+export type DownloadFormat = 'png' | 'jpg' | 'jpeg' | 'svg' | 'pdf';
 
 export interface DownloadOptions {
   format: DownloadFormat;
