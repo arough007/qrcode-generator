@@ -56,10 +56,8 @@ export const QR_SCALE_FACTOR = 37.5; // For size calculation
 
 // Error Messages
 export const ERROR_MESSAGES = {
-  NO_VCARD_DATA:
-    'Please fill in at least one contact field before downloading.',
+  NO_VCARD_DATA: 'Please fill in at least one contact field before downloading.',
   NO_TEXT_DATA: 'Please enter some text before downloading.',
-  NO_QR_CODE:
-    'No QR code available to download. Please generate a QR code first.',
+  NO_QR_CODE: 'No QR code available to download. Please generate a QR code first.',
   DOWNLOAD_FAILED: 'Failed to download QR code. Please try again.',
-} as const;
+} as const; 

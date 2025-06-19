@@ -7,11 +7,11 @@ interface LabelProps {
   required?: boolean;
 }
 
-const Label: React.FC<LabelProps> = ({
-  htmlFor,
-  children,
-  className = '',
-  required = false,
+const Label: React.FC<LabelProps> = ({ 
+  htmlFor, 
+  children, 
+  className = '', 
+  required = false 
 }) => {
   return (
     <label htmlFor={htmlFor} className={`form-label ${className}`.trim()}>
@@ -21,4 +21,4 @@ const Label: React.FC<LabelProps> = ({
   );
 };
 
-export default Label;
+export default Label; 

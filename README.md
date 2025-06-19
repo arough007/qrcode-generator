@@ -53,21 +53,18 @@ npm run dev
 ## Usage
 
 ### Text QR Codes
-
 1. **Select Type**: Choose "Text" from the dropdown
 2. **Enter Text**: Type or paste any text, URL, or data you want to encode
 3. **Customize**: Use color controls and advanced settings
 4. **Download**: Click "Download QR Code" to save as PNG
 
 ### Contact (vCard) QR Codes
-
 1. **Select Type**: Choose "Contact (vCard)" from the dropdown
 2. **Fill Details**: Enter contact information (name, phone, email, etc.)
 3. **Customize**: Adjust colors and QR settings as needed
 4. **Download**: Save the contact QR code
 
 ### Customization Options
-
 - **Colors**: Select QR code and background colors, or enable transparency
 - **Advanced Settings Modal**: Configure error correction level, size (200-600px), margin, and quality in a centered modal with backdrop blur
 - **Real-time Preview**: Changes update automatically with a 500ms debounce
@@ -104,7 +101,6 @@ The test suite uses Vitest and React Testing Library for fast, reliable testing 
 This project follows modern React best practices with a well-organized, maintainable codebase:
 
 ### 📁 **Modular Structure**
-
 - **Components**: Organized by feature with reusable UI components
 - **Hooks**: Custom hooks for state management and side effects
 - **Utils**: Pure utility functions for business logic
@@ -113,7 +109,6 @@ This project follows modern React best practices with a well-organized, maintain
 - **Responsive Layouts**: Desktop-optimized two-column layout with smooth transitions
 
 ### 🏗️ **Key Patterns**
-
 - **Custom Hooks**: `useFormState`, `useQRCode`, `useDebounce`
 - **Error Boundaries**: Graceful error handling and recovery
 - **Modular CSS**: Component-based stylesheets for maintainability
@@ -125,20 +120,17 @@ This project follows modern React best practices with a well-organized, maintain
 ## User Experience Features
 
 ### Desktop Layout
-
 - **Two-Column Design**: Controls on the left, QR display and settings on the right
 - **Responsive Breakpoints**: Smooth transitions between desktop, tablet, and mobile layouts
 - **Optimized Space Usage**: Better utilization of horizontal screen space
 
 ### Smart Interactions
-
 - **Skeleton Placeholder**: Blurred dummy QR code shows the expected size while editing
 - **Modal Settings**: Advanced settings open in a centered modal with backdrop blur
 - **Disabled States**: Download button is disabled with helpful tooltips when no QR code exists
 - **Smooth Animations**: Fade-in effects and scale animations for better user feedback
 
 ### Mobile Optimization
-
 - **Reordered Layout**: QR display appears first on mobile for better UX
 - **Touch-Friendly**: Modal and controls optimized for touch interactions
 - **Responsive Modal**: Settings modal adapts to smaller screens automatically

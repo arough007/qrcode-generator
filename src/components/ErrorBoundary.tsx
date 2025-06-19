@@ -25,7 +25,7 @@ class ErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // Log the error to console or error reporting service
     console.error('Error caught by boundary:', error, errorInfo);
-
+    
     this.setState({
       error,
       errorInfo,
@@ -49,16 +49,18 @@ class ErrorBoundary extends Component<Props, State> {
           <div className="error-boundary-content">
             <h2>🚫 Something went wrong</h2>
             <p>
-              An unexpected error occurred while rendering the QR Code
-              Generator. This might be due to invalid input or a temporary
-              issue.
+              An unexpected error occurred while rendering the QR Code Generator.
+              This might be due to invalid input or a temporary issue.
             </p>
-
+            
             <div className="error-actions">
-              <button onClick={this.handleRetry} className="retry-btn">
+              <button 
+                onClick={this.handleRetry}
+                className="retry-btn"
+              >
                 Try Again
               </button>
-              <button
+              <button 
                 onClick={() => window.location.reload()}
                 className="reload-btn"
               >
@@ -84,4 +86,4 @@ class ErrorBoundary extends Component<Props, State> {
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary; 

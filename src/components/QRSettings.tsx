@@ -39,8 +39,8 @@ const QRSettings: React.FC<QRSettingsProps> = ({
           <div className="settings-modal">
             <div className="settings-modal-header">
               <h3>Advanced QR Settings</h3>
-              <button
-                type="button"
+              <button 
+                type="button" 
                 className="settings-close-btn"
                 onClick={onToggleExpanded}
                 aria-label="Close settings"
@@ -48,7 +48,7 @@ const QRSettings: React.FC<QRSettingsProps> = ({
                 ✕
               </button>
             </div>
-
+            
             <div className="settings-content">
               <div className="form-group">
                 <label htmlFor="errorCorrectionLevel">
@@ -67,8 +67,8 @@ const QRSettings: React.FC<QRSettingsProps> = ({
                   <option value="H">High (30% damage resistance)</option>
                 </select>
                 <small className="help-text">
-                  Higher levels create more complex QR codes but can recover
-                  from more damage
+                  Higher levels create more complex QR codes but can recover from
+                  more damage
                 </small>
               </div>
 
@@ -110,8 +110,7 @@ const QRSettings: React.FC<QRSettingsProps> = ({
                   <span className="range-value">{settings.margin}</span>
                 </div>
                 <small className="help-text">
-                  White space around the QR code (0 = no margin, 4 = large
-                  margin)
+                  White space around the QR code (0 = no margin, 4 = large margin)
                 </small>
               </div>
 
@@ -134,8 +133,7 @@ const QRSettings: React.FC<QRSettingsProps> = ({
                   </span>
                 </div>
                 <small className="help-text">
-                  Higher quality creates larger file sizes but better image
-                  clarity
+                  Higher quality creates larger file sizes but better image clarity
                 </small>
               </div>
             </div>

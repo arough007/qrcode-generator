@@ -55,7 +55,7 @@ const QRCodeGenerator: React.FC = () => {
             qrSettings={formState.qrSettings}
             onDownload={downloadQRCode}
           />
-
+          
           <div className="output-settings">
             <SettingsControls formState={formState} formActions={formActions} />
           </div>

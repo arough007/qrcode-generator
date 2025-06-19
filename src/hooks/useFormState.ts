@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import {
-  VCardData,
-  QRType,
-  ColorOptions,
+import { 
+  VCardData, 
+  QRType, 
+  ColorOptions, 
   QRSettings,
   VCardChangeHandler,
   ColorChangeHandler,
-  QRSettingsChangeHandler,
+  QRSettingsChangeHandler
 } from '../types';
 import {
   VCARD_DEFAULTS,
@@ -93,4 +93,4 @@ export const useFormState = (): [FormState, FormActions] => {
   };
 
   return [state, actions];
-};
+}; 

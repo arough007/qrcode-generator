@@ -193,16 +193,16 @@
     max-width: none;
     max-height: calc(100vh - 20px);
   }
-
+  
   .settings-modal-header {
     padding: 15px 20px;
   }
-
+  
   .settings-modal-header h3 {
     font-size: 16px;
   }
-
+  
   .settings-content {
     padding: 20px;
   }
-}
+} 

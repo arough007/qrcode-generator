@@ -189,21 +189,21 @@
     grid-template-columns: 1fr;
     gap: 25px;
   }
-
+  
   .output-panel {
     min-height: auto;
     order: -1;
     gap: 20px;
   }
-
+  
   .controls-panel {
     order: 1;
   }
-
+  
   .output-settings {
     order: 2;
   }
-
+  
   .color-controls {
     justify-content: center;
   }
@@ -213,15 +213,15 @@
   .desktop-layout {
     gap: 20px;
   }
-
+  
   .controls-panel {
     gap: 15px;
   }
-
+  
   .qr-output {
     padding: 20px;
   }
-
+  
   .qr-placeholder {
     width: 250px;
     height: 250px;
@@ -255,9 +255,7 @@
 }
 
 .controls-panel > * {
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .form-group {
@@ -272,12 +270,12 @@
     text-align: center;
     margin-bottom: 20px;
   }
-
+  
   .controls-panel > * {
     margin-bottom: 20px;
   }
-
+  
   .controls-panel > *:last-child {
     margin-bottom: 0;
   }
-}
+} 

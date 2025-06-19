@@ -5,17 +5,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   fullWidth?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
-  error,
-  fullWidth = true,
-  className = '',
-  ...props
+const Input: React.FC<InputProps> = ({ 
+  error, 
+  fullWidth = true, 
+  className = '', 
+  ...props 
 }) => {
   const baseClasses = 'form-input';
   const widthClass = fullWidth ? 'w-full' : '';
   const errorClass = error ? 'error' : '';
-  const classes =
-    `${baseClasses} ${widthClass} ${errorClass} ${className}`.trim();
+  const classes = `${baseClasses} ${widthClass} ${errorClass} ${className}`.trim();
 
   return (
     <div className="input-wrapper">
@@ -25,4 +24,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default Input; 

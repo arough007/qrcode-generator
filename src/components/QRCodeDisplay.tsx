@@ -25,9 +25,9 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
   // Create a skeleton QR code using a dummy image
   const QRSkeleton = () => {
     const size = qrSettings.size;
-
+    
     return (
-      <div
+      <div 
         className="qr-skeleton"
         style={{
           width: size,
@@ -45,7 +45,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
             objectFit: 'contain',
             display: 'block',
           }}
-          onError={e => {
+          onError={(e) => {
             // Fallback to a simple placeholder if image doesn't exist
             const target = e.target as HTMLImageElement;
             target.style.display = 'none';
@@ -77,11 +77,11 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
           <div className="qr-content">
             <canvas
               ref={canvasRef}
-              style={{
-                display: showQRCode ? 'block' : 'none',
-                maxWidth: '100%',
+              style={{ 
+                display: showQRCode ? 'block' : 'none', 
+                maxWidth: '100%', 
                 height: 'auto',
-                margin: '0 auto',
+                margin: '0 auto'
               }}
             />
             {!showQRCode && <QRSkeleton />}
@@ -90,11 +90,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
             onClick={() => onDownload(qrType, textInput, vcardData)}
             className="download-btn"
             disabled={!showQRCode}
-            title={
-              !showQRCode
-                ? 'Enter data first'
-                : 'Download the generated QR code'
-            }
+            title={!showQRCode ? "Enter data first" : "Download the generated QR code"}
           >
             Download QR Code
           </button>

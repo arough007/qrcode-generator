@@ -9,4 +9,4 @@ const FormGroup: React.FC<FormGroupProps> = ({ children, className = '' }) => {
   return <div className={`form-group ${className}`.trim()}>{children}</div>;
 };
 
-export default FormGroup;
+export default FormGroup; 

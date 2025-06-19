@@ -70,18 +70,9 @@ export const generateVCardString = (vcardData: VCardData): string => {
  */
 export const getVCardSummary = (vcardData: VCardData): string[] => {
   const summary: string[] = [];
-
-  const {
-    firstName,
-    lastName,
-    organization,
-    title,
-    phone,
-    email,
-    website,
-    address,
-  } = vcardData;
-
+  
+  const { firstName, lastName, organization, title, phone, email, website, address } = vcardData;
+  
   const fullName = `${firstName} ${lastName}`.trim();
   if (fullName) summary.push(`Name: ${fullName}`);
   if (organization) summary.push(`Organization: ${organization}`);
@@ -90,17 +81,14 @@ export const getVCardSummary = (vcardData: VCardData): string[] => {
   if (email) summary.push(`Email: ${email}`);
   if (website) summary.push(`Website: ${website}`);
   if (address) summary.push(`Address: ${address}`);
-
+  
   return summary;
 };
 
 /**
  * Basic validation for VCard field formats
  */
-export const validateVCardField = (
-  field: VCardField,
-  value: string
-): boolean => {
+export const validateVCardField = (field: VCardField, value: string): boolean => {
   switch (field) {
     case 'email':
       return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -111,4 +99,4 @@ export const validateVCardField = (
     default:
       return true;
   }
-};
+}; 
