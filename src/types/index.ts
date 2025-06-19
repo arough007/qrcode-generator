@@ -23,7 +23,7 @@ export interface VCardData {
   address: string;
 }
 
-// Color types with validation
+// Color types
 export type HexColor = `#${string}`;
 
 export interface ColorOptions {
@@ -32,43 +32,14 @@ export interface ColorOptions {
   transparentBackground: boolean;
 }
 
-// QR Settings with constraints
+// QR Settings
 export type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
-
-export interface QRSizeConstraints {
-  min: 200;
-  max: 600;
-  step: 50;
-}
-
-export interface QRMarginConstraints {
-  min: 0;
-  max: 4;
-  step: 1;
-}
-
-export interface QRQualityConstraints {
-  min: 0.1;
-  max: 1.0;
-  step: 0.1;
-}
 
 export interface QRSettings {
   errorCorrectionLevel: ErrorCorrectionLevel;
-  size: number; // Should be between 200-600
-  margin: number; // Should be between 0-4
-  quality: number; // Should be between 0.1-1.0
-}
-
-// Form validation types
-export interface ValidationError {
-  field: string;
-  message: string;
-}
-
-export interface FormValidationResult {
-  isValid: boolean;
-  errors: ValidationError[];
+  size: number; // 200-600
+  margin: number; // 0-4
+  quality: number; // 0.1-1.0
 }
 
 // Event handler types
