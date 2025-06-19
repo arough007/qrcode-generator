@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { QRType, VCardData, QRSettings, DownloadFormat } from '../types';
 import ExportOptions from './ExportOptions';
+import dummyQrImage from '../assets/images/dummy-qr.png';
 
 interface QRCodeDisplayProps {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
@@ -44,7 +45,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
         }}
       >
         <img
-          src="/qrcode-generator/assets/images/dummy-qr.png"
+          src={dummyQrImage}
           alt="QR Code Placeholder"
           style={{
             width: '100%',
