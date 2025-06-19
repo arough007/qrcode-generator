@@ -96,3 +96,31 @@ p,
 
 /* Button text inherits from button styles */
 /* Input text inherits from input styles */
+
+/* QR Icon Styles */
+.qr-icon {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: -0.05em; /* Fine-tune vertical alignment */
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+h1:hover .qr-icon {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Add subtle animation */
+@keyframes qr-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.qr-icon rect[fill="#4a5568"] {
+  animation: qr-pulse 3s ease-in-out infinite;
+}
