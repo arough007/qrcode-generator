@@ -56,6 +56,7 @@ const QRCodeGenerator: React.FC = () => {
           qrType={formState.qrType}
           textInput={formState.textInput}
           vcardData={formState.vcardData}
+          qrSettings={formState.qrSettings}
           onDownload={downloadQRCode}
         />
       </div>

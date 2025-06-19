@@ -12,6 +12,14 @@
   justify-content: center;
 }
 
+.qr-skeleton {
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
 .qr-canvas {
   border: 2px solid #e1e5e9;
   border-radius: 10px;
