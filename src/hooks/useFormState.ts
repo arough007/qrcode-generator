@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { 
   VCardData, 
   QRType, 
@@ -45,42 +45,42 @@ const initialState: FormState = {
 export const useFormState = (): [FormState, FormActions] => {
   const [state, setState] = useState<FormState>(initialState);
 
-  const setTextInput = useCallback((value: string) => {
+  const setTextInput = (value: string) => {
     setState(prev => ({ ...prev, textInput: value }));
-  }, []);
+  };
 
-  const setQrType = useCallback((type: QRType) => {
+  const setQrType = (type: QRType) => {
     setState(prev => ({ ...prev, qrType: type }));
-  }, []);
+  };
 
-  const updateVcardData = useCallback<VCardChangeHandler>((field, value) => {
+  const updateVcardData: VCardChangeHandler = (field, value) => {
     setState(prev => ({
       ...prev,
       vcardData: { ...prev.vcardData, [field]: value },
     }));
-  }, []);
+  };
 
-  const updateColors = useCallback<ColorChangeHandler>((field, value) => {
+  const updateColors: ColorChangeHandler = (field, value) => {
     setState(prev => ({
       ...prev,
       colors: { ...prev.colors, [field]: value },
     }));
-  }, []);
+  };
 
-  const updateQrSettings = useCallback<QRSettingsChangeHandler>((field, value) => {
+  const updateQrSettings: QRSettingsChangeHandler = (field, value) => {
     setState(prev => ({
       ...prev,
       qrSettings: { ...prev.qrSettings, [field]: value },
     }));
-  }, []);
+  };
 
-  const setSettingsExpanded = useCallback((expanded: boolean) => {
+  const setSettingsExpanded = (expanded: boolean) => {
     setState(prev => ({ ...prev, settingsExpanded: expanded }));
-  }, []);
+  };
 
-  const resetForm = useCallback(() => {
+  const resetForm = () => {
     setState(initialState);
-  }, []);
+  };
 
   const actions: FormActions = {
     setTextInput,

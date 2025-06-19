@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
 import { useFormState } from '../hooks/useFormState';
 import InputControls from './InputControls';
@@ -12,7 +12,7 @@ const QRCodeGenerator: React.FC = () => {
   const { canvasRef, showQRCode, error, generateQRCode, downloadQRCode } =
     useQRCode();
 
-  const handleGeneration = useCallback(() => {
+  const handleGeneration = () => {
     generateQRCode(
       formState.qrType,
       formState.textInput,
@@ -20,14 +20,7 @@ const QRCodeGenerator: React.FC = () => {
       formState.colors,
       formState.qrSettings
     );
-  }, [
-    generateQRCode,
-    formState.qrType,
-    formState.textInput,
-    formState.vcardData,
-    formState.colors,
-    formState.qrSettings,
-  ]);
+  };
 
   // Debounced effect to regenerate QR code when inputs change
   useEffect(() => {
@@ -42,7 +35,6 @@ const QRCodeGenerator: React.FC = () => {
     formState.vcardData,
     formState.colors,
     formState.qrSettings,
-    handleGeneration,
   ]);
 
   return (
