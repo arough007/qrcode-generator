@@ -2,48 +2,14 @@ import { useRef, useCallback, useState } from 'react';
 import QRCode from 'qrcode';
 import { VCardData, QRType, ColorOptions, QRSettings } from '../types';
 import { QR_SCALE_FACTOR, ERROR_MESSAGES } from '../constants';
+import { hasVCardData, generateVCardString } from '../utils/vcard';
 
 export const useQRCode = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [showQRCode, setShowQRCode] = useState(false);
   const [error, setError] = useState('');
 
-  const generateVCardString = (data: VCardData): string => {
-    let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
 
-    // Full name
-    if (data.firstName || data.lastName) {
-      vcard += `FN:${data.firstName} ${data.lastName}`.trim() + '\n';
-      vcard += `N:${data.lastName};${data.firstName};;;\n`;
-    }
-
-    // Organization and title
-    if (data.organization) {
-      vcard += `ORG:${data.organization}\n`;
-    }
-    if (data.title) {
-      vcard += `TITLE:${data.title}\n`;
-    }
-
-    // Contact info
-    if (data.phone) {
-      vcard += `TEL:${data.phone}\n`;
-    }
-    if (data.email) {
-      vcard += `EMAIL:${data.email}\n`;
-    }
-    if (data.website) {
-      vcard += `URL:${data.website}\n`;
-    }
-
-    // Address
-    if (data.address) {
-      vcard += `ADR:;;${data.address};;;;\n`;
-    }
-
-    vcard += 'END:VCARD';
-    return vcard;
-  };
 
   const generateQRCode = useCallback(
     async (
@@ -109,7 +75,7 @@ export const useQRCode = () => {
       let hasData = false;
 
       if (qrType === 'vcard') {
-        hasData = Object.values(vcardData).some(value => value.trim() !== '');
+        hasData = hasVCardData(vcardData);
       } else {
         hasData = textInput.trim() !== '';
       }
