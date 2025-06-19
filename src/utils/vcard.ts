@@ -1,4 +1,4 @@
-import { VCardData, VCardField, ValidationError, FormValidationResult } from '../types';
+import { VCardData, VCardField } from '../types';
 
 /**
  * Validates if VCard data has at least one non-empty field
@@ -86,7 +86,7 @@ export const getVCardSummary = (vcardData: VCardData): string[] => {
 };
 
 /**
- * Validates individual VCard field formats
+ * Basic validation for VCard field formats
  */
 export const validateVCardField = (field: VCardField, value: string): boolean => {
   switch (field) {
@@ -99,58 +99,4 @@ export const validateVCardField = (field: VCardField, value: string): boolean =>
     default:
       return true;
   }
-};
-
-/**
- * Gets validation errors for VCard data
- */
-export const getVCardValidationErrors = (vcardData: VCardData): Record<VCardField, string> => {
-  const errors: Record<VCardField, string> = {
-    firstName: '',
-    lastName: '',
-    organization: '',
-    title: '',
-    phone: '',
-    email: '',
-    website: '',
-    address: '',
-  };
-
-  Object.entries(vcardData).forEach(([field, value]) => {
-    const fieldKey = field as VCardField;
-    if (!validateVCardField(fieldKey, value)) {
-      switch (fieldKey) {
-        case 'email':
-          errors[fieldKey] = 'Please enter a valid email address';
-          break;
-        case 'website':
-          errors[fieldKey] = 'Please enter a valid URL (starting with http:// or https://)';
-          break;
-        case 'phone':
-          errors[fieldKey] = 'Please enter a valid phone number';
-          break;
-      }
-    }
-  });
-
-  return errors;
-};
-
-/**
- * Validates entire VCard form and returns structured result
- */
-export const validateVCardForm = (vcardData: VCardData): FormValidationResult => {
-  const fieldErrors = getVCardValidationErrors(vcardData);
-  const errors: ValidationError[] = [];
-
-  Object.entries(fieldErrors).forEach(([field, message]) => {
-    if (message) {
-      errors.push({ field, message });
-    }
-  });
-
-  return {
-    isValid: errors.length === 0,
-    errors,
-  };
 }; 
