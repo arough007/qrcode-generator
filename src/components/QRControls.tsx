@@ -17,7 +17,7 @@ const QRControls: React.FC<QRControlsProps> = ({ formState, formActions }) => {
           onColorChange={formActions.updateColors}
         />
       </div>
-      
+
       <div className="qr-settings-section">
         <QRSettings
           settings={formState.qrSettings}

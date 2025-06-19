@@ -38,4 +38,4 @@ const Controls: React.FC<ControlsProps> = ({ formState, formActions }) => {
   );
 };
 
-export default Controls; 
+export default Controls;

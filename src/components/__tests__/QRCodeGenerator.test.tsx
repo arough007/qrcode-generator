@@ -36,7 +36,7 @@ describe('QRCodeGenerator', () => {
     expect(screen.getByLabelText('Text or URL to encode:')).toBeInTheDocument();
     expect(screen.getByLabelText('QR Code Color')).toBeInTheDocument();
     expect(screen.getByLabelText('Background Color')).toBeInTheDocument();
-    expect(screen.getByText('Generated QR Code')).toBeInTheDocument();
+    expect(screen.getByText('Download QR Code')).toBeInTheDocument();
   });
 
   it('switches between text and vCard modes', async () => {

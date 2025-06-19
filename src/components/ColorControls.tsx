@@ -13,7 +13,9 @@ const ColorControls: React.FC<ColorControlsProps> = ({
   const foregroundInputRef = useRef<HTMLInputElement>(null);
   const backgroundInputRef = useRef<HTMLInputElement>(null);
 
-  const handlePreviewClick = (inputRef: React.RefObject<HTMLInputElement | null>) => {
+  const handlePreviewClick = (
+    inputRef: React.RefObject<HTMLInputElement | null>
+  ) => {
     inputRef.current?.click();
   };
 
@@ -22,7 +24,7 @@ const ColorControls: React.FC<ColorControlsProps> = ({
       <div className="color-controls-header">
         <h3 className="section-title">Color Settings</h3>
       </div>
-      
+
       <div className="color-controls-grid">
         {/* QR Code Color */}
         <div className="color-picker-group">
@@ -38,12 +40,14 @@ const ColorControls: React.FC<ColorControlsProps> = ({
               value={colors.foregroundColor}
               onChange={e => onColorChange('foregroundColor', e.target.value)}
             />
-            <div 
+            <div
               className="color-picker-preview"
               style={{ backgroundColor: colors.foregroundColor }}
               onClick={() => handlePreviewClick(foregroundInputRef)}
             >
-              <span className="color-value">{colors.foregroundColor.toUpperCase()}</span>
+              <span className="color-value">
+                {colors.foregroundColor.toUpperCase()}
+              </span>
             </div>
           </div>
         </div>
@@ -63,19 +67,31 @@ const ColorControls: React.FC<ColorControlsProps> = ({
               onChange={e => onColorChange('backgroundColor', e.target.value)}
               disabled={colors.transparentBackground}
             />
-            <div 
+            <div
               className={`color-picker-preview ${colors.transparentBackground ? 'disabled' : ''}`}
-              style={{ 
-                backgroundColor: colors.transparentBackground ? 'transparent' : colors.backgroundColor,
-                backgroundImage: colors.transparentBackground ? 
-                  'linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)' : 'none',
-                backgroundSize: colors.transparentBackground ? '12px 12px' : 'auto',
-                backgroundPosition: colors.transparentBackground ? '0 0, 0 6px, 6px -6px, -6px 0px' : 'auto'
+              style={{
+                backgroundColor: colors.transparentBackground
+                  ? 'transparent'
+                  : colors.backgroundColor,
+                backgroundImage: colors.transparentBackground
+                  ? 'linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%)'
+                  : 'none',
+                backgroundSize: colors.transparentBackground
+                  ? '12px 12px'
+                  : 'auto',
+                backgroundPosition: colors.transparentBackground
+                  ? '0 0, 0 6px, 6px -6px, -6px 0px'
+                  : 'auto',
               }}
-              onClick={() => !colors.transparentBackground && handlePreviewClick(backgroundInputRef)}
+              onClick={() =>
+                !colors.transparentBackground &&
+                handlePreviewClick(backgroundInputRef)
+              }
             >
               <span className="color-value">
-                {colors.transparentBackground ? 'TRANSPARENT' : colors.backgroundColor.toUpperCase()}
+                {colors.transparentBackground
+                  ? 'TRANSPARENT'
+                  : colors.backgroundColor.toUpperCase()}
               </span>
             </div>
           </div>
@@ -89,7 +105,9 @@ const ColorControls: React.FC<ColorControlsProps> = ({
             type="checkbox"
             className="toggle-input"
             checked={colors.transparentBackground}
-            onChange={e => onColorChange('transparentBackground', e.target.checked)}
+            onChange={e =>
+              onColorChange('transparentBackground', e.target.checked)
+            }
           />
           <div className="toggle-slider">
             <div className="toggle-handle"></div>

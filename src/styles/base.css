@@ -113,7 +113,8 @@ h1:hover .qr-icon {
 
 /* Add subtle animation */
 @keyframes qr-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -121,6 +122,6 @@ h1:hover .qr-icon {
   }
 }
 
-.qr-icon rect[fill="#4a5568"] {
+.qr-icon rect[fill='#4a5568'] {
   animation: qr-pulse 3s ease-in-out infinite;
 }
