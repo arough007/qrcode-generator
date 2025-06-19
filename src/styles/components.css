@@ -11,10 +11,10 @@
 label,
 .form-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 600;
-  color: #555;
-  font-size: 1.1rem;
+  color: #4a5568;
+  font-size: 0.875rem;
 }
 
 .form-label .required {
@@ -32,14 +32,17 @@ select,
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  padding: 15px;
-  border: 2px solid #e1e5e9;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #2d3748;
+  background: #ffffff;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.5;
 }
 
 input[type='text']:focus,
@@ -50,7 +53,39 @@ textarea:focus,
 select:focus,
 .form-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Placeholder styles - more transparent */
+input[type='text']::placeholder,
+input[type='tel']::placeholder,
+input[type='email']::placeholder,
+input[type='url']::placeholder,
+textarea::placeholder,
+.form-input::placeholder {
+  color: #a0aec0;
+  opacity: 0.6;
+}
+
+input[type='text']::-webkit-input-placeholder,
+input[type='tel']::-webkit-input-placeholder,
+input[type='email']::-webkit-input-placeholder,
+input[type='url']::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+.form-input::-webkit-input-placeholder {
+  color: #a0aec0;
+  opacity: 0.6;
+}
+
+input[type='text']::-moz-placeholder,
+input[type='tel']::-moz-placeholder,
+input[type='email']::-moz-placeholder,
+input[type='url']::-moz-placeholder,
+textarea::-moz-placeholder,
+.form-input::-moz-placeholder {
+  color: #a0aec0;
+  opacity: 0.6;
 }
 
 .form-input.error {
@@ -60,9 +95,10 @@ select:focus,
 .input-error {
   display: block;
   color: #dc3545;
-  font-size: 14px;
-  margin-top: 5px;
+  font-size: 0.75rem;
+  margin-top: 4px;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 select {
@@ -146,16 +182,18 @@ textarea {
 /* Success Button */
 .btn-success,
 .download-btn {
-  background: #28a745;
+  background: #38a169;
   color: white;
   margin-top: 20px;
   padding: 12px 30px;
   border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .btn-success:hover:not(:disabled),
 .download-btn:hover:not(:disabled) {
-  background: #218838;
+  background: #2f855a;
 }
 
 .download-btn:disabled {

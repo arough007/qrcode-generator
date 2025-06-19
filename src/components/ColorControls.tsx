@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ColorOptions } from '../types';
 
 interface ColorControlsProps {
@@ -10,6 +10,13 @@ const ColorControls: React.FC<ColorControlsProps> = ({
   colors,
   onColorChange,
 }) => {
+  const foregroundInputRef = useRef<HTMLInputElement>(null);
+  const backgroundInputRef = useRef<HTMLInputElement>(null);
+
+  const handlePreviewClick = (inputRef: React.RefObject<HTMLInputElement | null>) => {
+    inputRef.current?.click();
+  };
+
   return (
     <div className="color-controls-container">
       <div className="color-controls-header">
@@ -24,15 +31,17 @@ const ColorControls: React.FC<ColorControlsProps> = ({
           </label>
           <div className="color-picker-wrapper">
             <input
+              ref={foregroundInputRef}
               type="color"
               id="foregroundColor"
-              className="color-picker-input"
+              className="color-picker-input-hidden"
               value={colors.foregroundColor}
               onChange={e => onColorChange('foregroundColor', e.target.value)}
             />
             <div 
               className="color-picker-preview"
               style={{ backgroundColor: colors.foregroundColor }}
+              onClick={() => handlePreviewClick(foregroundInputRef)}
             >
               <span className="color-value">{colors.foregroundColor.toUpperCase()}</span>
             </div>
@@ -46,9 +55,10 @@ const ColorControls: React.FC<ColorControlsProps> = ({
           </label>
           <div className="color-picker-wrapper">
             <input
+              ref={backgroundInputRef}
               type="color"
               id="backgroundColor"
-              className="color-picker-input"
+              className="color-picker-input-hidden"
               value={colors.backgroundColor}
               onChange={e => onColorChange('backgroundColor', e.target.value)}
               disabled={colors.transparentBackground}
@@ -62,6 +72,7 @@ const ColorControls: React.FC<ColorControlsProps> = ({
                 backgroundSize: colors.transparentBackground ? '12px 12px' : 'auto',
                 backgroundPosition: colors.transparentBackground ? '0 0, 0 6px, 6px -6px, -6px 0px' : 'auto'
               }}
+              onClick={() => !colors.transparentBackground && handlePreviewClick(backgroundInputRef)}
             >
               <span className="color-value">
                 {colors.transparentBackground ? 'TRANSPARENT' : colors.backgroundColor.toUpperCase()}
