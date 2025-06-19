@@ -7,6 +7,25 @@
   }
 }
 
+/* More gradual container sizing transitions */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 20px;

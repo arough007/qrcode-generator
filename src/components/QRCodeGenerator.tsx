@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
 import { useFormState } from '../hooks/useFormState';
-import QRControls from './QRControls';
+import InputControls from './InputControls';
+import SettingsControls from './SettingsControls';
 import QRCodeDisplay from './QRCodeDisplay';
 import { DEBOUNCE_DELAY } from '../constants';
 
@@ -46,19 +47,27 @@ const QRCodeGenerator: React.FC = () => {
 
   return (
     <div className="qr-generator">
-      <div className="content">
-        <QRControls formState={formState} formActions={formActions} />
+      <div className="desktop-layout">
+        <div className="controls-panel">
+          <InputControls formState={formState} formActions={formActions} />
+        </div>
 
-        <QRCodeDisplay
-          canvasRef={canvasRef}
-          showQRCode={showQRCode}
-          error={error}
-          qrType={formState.qrType}
-          textInput={formState.textInput}
-          vcardData={formState.vcardData}
-          qrSettings={formState.qrSettings}
-          onDownload={downloadQRCode}
-        />
+        <div className="output-panel">
+          <QRCodeDisplay
+            canvasRef={canvasRef}
+            showQRCode={showQRCode}
+            error={error}
+            qrType={formState.qrType}
+            textInput={formState.textInput}
+            vcardData={formState.vcardData}
+            qrSettings={formState.qrSettings}
+            onDownload={downloadQRCode}
+          />
+          
+          <div className="output-settings">
+            <SettingsControls formState={formState} formActions={formActions} />
+          </div>
+        </div>
       </div>
     </div>
   );

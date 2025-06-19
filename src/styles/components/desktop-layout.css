@@ -1,0 +1,166 @@
+/* Desktop-optimized layout with smooth transitions */
+
+.desktop-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  transition: all 0.3s ease;
+}
+
+.controls-panel {
+  /* Left panel for input controls only */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 400px; /* Reduced height since settings moved */
+  transition: all 0.3s ease;
+}
+
+.output-panel {
+  /* Right panel for QR code display and settings */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 600px;
+  transition: all 0.3s ease;
+  gap: 30px;
+}
+
+/* Intermediate breakpoint for smoother transition */
+@media (max-width: 1200px) {
+  .desktop-layout {
+    grid-template-columns: 1.2fr 0.8fr; /* Slightly favor controls */
+    gap: 30px;
+  }
+}
+
+/* Tablet/smaller desktop - more gradual transition */
+@media (max-width: 900px) {
+  .desktop-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .output-panel {
+    min-height: auto;
+    order: -1; /* Move QR display to top on smaller screens */
+    gap: 20px;
+  }
+  
+  .controls-panel {
+    order: 1;
+  }
+  
+  .output-settings {
+    order: 2; /* Settings go after input controls on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-layout {
+    gap: 20px;
+  }
+  
+  .controls-panel {
+    gap: 15px;
+  }
+}
+
+/* Ensure QR output section fits well in the panel */
+.output-panel .output-section {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Settings under QR code */
+.output-settings {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Adjust QR display for desktop layout */
+.output-panel .qr-output {
+  margin-top: 20px;
+}
+
+/* Consistent spacing and sizing across breakpoints */
+@media (min-width: 901px) {
+  .controls-panel {
+    max-width: 600px; /* Prevent controls from getting too wide */
+  }
+}
+
+/* Smooth content transitions */
+.controls-panel,
+.output-panel {
+  transition: all 0.3s ease;
+}
+
+/* Consistent content area sizing */
+.controls-panel > * {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Ensure consistent form heights */
+.form-group {
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+/* Input content container */
+.input-content-container {
+  min-height: 400px; /* Consistent height for both input types */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Text input container */
+.text-input-container {
+  min-height: 120px; /* Reserve space for text input */
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* VCard form container */
+.vcard-form {
+  min-height: 400px; /* Reserve space for vCard fields */
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade in animation for content switching */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure consistent visual hierarchy */
+@media (max-width: 900px) {
+  .output-panel .output-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .controls-panel > * {
+    margin-bottom: 20px;
+  }
+  
+  .controls-panel > *:last-child {
+    margin-bottom: 0;
+  }
+} 

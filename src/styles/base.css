@@ -22,10 +22,10 @@ body {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  width: 700px; /* Fixed width for consistency */
+  width: 100%;
+  max-width: 1200px; /* Wider for desktop */
   min-width: 0; /* Allow container to shrink */
   overflow-x: hidden; /* Prevent horizontal overflow */
-  /* Force strict width constraint */
   box-sizing: border-box;
 }
 
