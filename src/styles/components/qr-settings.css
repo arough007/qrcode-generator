@@ -3,7 +3,8 @@
   margin-bottom: 25px;
   border: 2px solid #e1e5e9;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: visible; /* Changed to allow modal to show outside container */
+  position: relative; /* Add relative positioning for modal positioning */
 }
 
 .settings-toggle {
@@ -34,10 +35,101 @@
   transform: rotate(180deg);
 }
 
-.settings-content {
-  padding: 20px;
+/* Modal overlay */
+.settings-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal container */
+.settings-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
   background: white;
-  border-top: 1px solid #e1e5e9;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  overflow: hidden;
+  animation: slideInCenter 0.3s ease-out;
+}
+
+/* Modal header */
+.settings-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.settings-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.settings-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.settings-close-btn:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+.settings-content {
+  padding: 25px;
+  background: white;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInCenter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .range-input {
@@ -92,4 +184,25 @@
   font-size: 12px;
   color: #6c757d;
   font-style: italic;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .settings-modal {
+    width: calc(100vw - 20px);
+    max-width: none;
+    max-height: calc(100vh - 20px);
+  }
+  
+  .settings-modal-header {
+    padding: 15px 20px;
+  }
+  
+  .settings-modal-header h3 {
+    font-size: 16px;
+  }
+  
+  .settings-content {
+    padding: 20px;
+  }
 } 
