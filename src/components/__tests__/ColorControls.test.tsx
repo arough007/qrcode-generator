@@ -21,8 +21,8 @@ describe('ColorControls', () => {
       <ColorControls colors={defaultColors} onColorChange={mockOnColorChange} />
     );
 
-    expect(screen.getByLabelText('QR Code Color:')).toBeInTheDocument();
-    expect(screen.getByLabelText('Background Color:')).toBeInTheDocument();
+    expect(screen.getByLabelText('QR Code Color')).toBeInTheDocument();
+    expect(screen.getByLabelText('Background Color')).toBeInTheDocument();
     expect(
       screen.getByLabelText('Use transparent background')
     ).toBeInTheDocument();
@@ -40,10 +40,10 @@ describe('ColorControls', () => {
     );
 
     const foregroundInput = screen.getByLabelText(
-      'QR Code Color:'
+      'QR Code Color'
     ) as HTMLInputElement;
     const backgroundInput = screen.getByLabelText(
-      'Background Color:'
+      'Background Color'
     ) as HTMLInputElement;
 
     expect(foregroundInput.value).toBe('#ff0000');
@@ -55,7 +55,7 @@ describe('ColorControls', () => {
       <ColorControls colors={defaultColors} onColorChange={mockOnColorChange} />
     );
 
-    const foregroundInput = screen.getByLabelText('QR Code Color:');
+    const foregroundInput = screen.getByLabelText('QR Code Color');
     fireEvent.change(foregroundInput, { target: { value: '#ff0000' } });
 
     expect(mockOnColorChange).toHaveBeenCalledWith(
@@ -69,7 +69,7 @@ describe('ColorControls', () => {
       <ColorControls colors={defaultColors} onColorChange={mockOnColorChange} />
     );
 
-    const backgroundInput = screen.getByLabelText('Background Color:');
+    const backgroundInput = screen.getByLabelText('Background Color');
     fireEvent.change(backgroundInput, { target: { value: '#00ff00' } });
 
     expect(mockOnColorChange).toHaveBeenCalledWith(
@@ -105,7 +105,7 @@ describe('ColorControls', () => {
       />
     );
 
-    const backgroundInput = screen.getByLabelText('Background Color:');
+    const backgroundInput = screen.getByLabelText('Background Color');
     expect(backgroundInput).toBeDisabled();
   });
 
@@ -114,7 +114,7 @@ describe('ColorControls', () => {
       <ColorControls colors={defaultColors} onColorChange={mockOnColorChange} />
     );
 
-    const backgroundInput = screen.getByLabelText('Background Color:');
+    const backgroundInput = screen.getByLabelText('Background Color');
     expect(backgroundInput).not.toBeDisabled();
   });
 

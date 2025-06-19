@@ -34,8 +34,8 @@ describe('QRCodeGenerator', () => {
     // Check that main form controls are present
     expect(screen.getByLabelText('QR Code Type:')).toBeInTheDocument();
     expect(screen.getByLabelText('Text or URL to encode:')).toBeInTheDocument();
-    expect(screen.getByLabelText('QR Code Color:')).toBeInTheDocument();
-    expect(screen.getByLabelText('Background Color:')).toBeInTheDocument();
+    expect(screen.getByLabelText('QR Code Color')).toBeInTheDocument();
+    expect(screen.getByLabelText('Background Color')).toBeInTheDocument();
     expect(screen.getByText('Generated QR Code')).toBeInTheDocument();
   });
 
@@ -72,7 +72,7 @@ describe('QRCodeGenerator', () => {
     const user = userEvent.setup();
     render(<QRCodeGenerator />);
 
-    const foregroundColorInput = screen.getByLabelText('QR Code Color:');
+    const foregroundColorInput = screen.getByLabelText('QR Code Color');
     await user.click(foregroundColorInput);
     fireEvent.change(foregroundColorInput, { target: { value: '#ff0000' } });
 
@@ -83,7 +83,7 @@ describe('QRCodeGenerator', () => {
     const user = userEvent.setup();
     render(<QRCodeGenerator />);
 
-    const backgroundColorInput = screen.getByLabelText('Background Color:');
+    const backgroundColorInput = screen.getByLabelText('Background Color');
     const transparentCheckbox = screen.getByLabelText(
       'Use transparent background'
     );

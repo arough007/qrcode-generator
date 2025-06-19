@@ -167,40 +167,238 @@
 }
 
 /* ==========================================================================
-   Color Controls
+   Color Controls - Modern Design
    ========================================================================== */
 
-.color-controls {
-  display: flex;
-  gap: 20px;
-  align-items: flex-end;
-  flex-wrap: wrap;
+.color-controls-container {
+  width: 100%;
 }
 
-.color-control {
+.color-controls-header {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.color-controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.color-picker-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
 }
 
-.color-input {
-  width: 60px;
-  height: 40px;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.color-picker-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 4px;
 }
 
-.color-input:hover {
+.color-picker-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.color-picker-wrapper:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.color-picker-wrapper:focus-within {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.color-picker-input {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+.color-picker-input:disabled {
+  cursor: not-allowed;
+}
+
+.color-picker-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.color-picker-preview:hover {
   transform: scale(1.05);
+  border-color: #cbd5e0;
+}
+
+.color-picker-preview.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.color-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.color-picker-preview:hover .color-value {
+  opacity: 1;
+}
+
+/* Transparency Control - Modern Toggle Switch */
+.transparency-control {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.transparency-control:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e0;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggle-input:checked + .toggle-slider {
+  background: #4299e1;
+}
+
+.toggle-input:focus + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.toggle-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-input:checked + .toggle-slider .toggle-handle {
+  transform: translateX(20px);
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2d3748;
+  user-select: none;
+}
+
+.toggle-description {
+  font-size: 12px;
+  color: #718096;
+  margin: 0;
+  line-height: 1.4;
+  padding-left: 56px;
+}
+
+/* Responsive Design for Color Controls */
+@media (max-width: 600px) {
+  .color-controls-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .toggle-description {
+    padding-left: 0;
+    margin-top: 8px;
+  }
+}
+
+/* Legacy color controls - remove old styles */
+.color-controls {
+  display: none;
+}
+
+.color-control {
+  display: none;
+}
+
+.color-input {
+  display: none;
 }
 
 .color-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #555;
+  display: none;
 }
 
 /* ==========================================================================
@@ -235,8 +433,9 @@
     margin-top: 20px;
   }
 
-  .color-controls {
-    justify-content: center;
+  .color-controls-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
