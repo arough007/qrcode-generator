@@ -5,4 +5,5 @@
 @import './styles/components/buttons.css';
 @import './styles/components/qr-display.css';
 @import './styles/components/qr-settings.css';
+@import './styles/components/error-boundary.css';
 @import './styles/utils/responsive.css';
