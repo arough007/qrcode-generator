@@ -1,6 +1,7 @@
 import { useRef, useCallback, useState } from 'react';
 import QRCode from 'qrcode';
 import { VCardData, QRType, ColorOptions, QRSettings } from '../types';
+import { QR_SCALE_FACTOR, ERROR_MESSAGES } from '../constants';
 
 export const useQRCode = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -72,7 +73,7 @@ export const useQRCode = () => {
         }
 
         // Prepare QR code generation options
-        const scale = Math.round(qrSettings.size / 37.5); // Calculate scale based on desired size
+        const scale = Math.round(qrSettings.size / QR_SCALE_FACTOR); // Calculate scale based on desired size
         const qrOptions = {
           errorCorrectionLevel: qrSettings.errorCorrectionLevel,
           type: 'image/png' as const,
@@ -116,16 +117,14 @@ export const useQRCode = () => {
       if (!hasData) {
         const errorMessage =
           qrType === 'vcard'
-            ? 'Please fill in at least one contact field before downloading.'
-            : 'Please enter some text before downloading.';
+            ? ERROR_MESSAGES.NO_VCARD_DATA
+            : ERROR_MESSAGES.NO_TEXT_DATA;
         setError(errorMessage);
         return;
       }
 
       if (!canvasRef.current || !showQRCode) {
-        setError(
-          'No QR code available to download. Please generate a QR code first.'
-        );
+        setError(ERROR_MESSAGES.NO_QR_CODE);
         return;
       }
 
@@ -145,7 +144,7 @@ export const useQRCode = () => {
         document.body.removeChild(link);
       } catch (error) {
         console.error('Error downloading QR code:', error);
-        setError('Failed to download QR code. Please try again.');
+        setError(ERROR_MESSAGES.DOWNLOAD_FAILED);
       }
     },
     [showQRCode]

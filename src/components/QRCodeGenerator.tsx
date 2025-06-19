@@ -5,6 +5,11 @@ import {
   ColorOptions,
   QRSettings as QRSettingsType,
 } from '../types';
+import {
+  VCARD_DEFAULTS,
+  COLOR_DEFAULTS,
+  QR_SETTINGS_DEFAULTS,
+} from '../constants';
 import { useQRCode } from '../hooks/useQRCode';
 import { useDebounce } from '../hooks/useDebounce';
 import QRTypeSelector from './QRTypeSelector';
@@ -17,27 +22,9 @@ import QRSettings from './QRSettings';
 const QRCodeGenerator: React.FC = () => {
   const [textInput, setTextInput] = useState('');
   const [qrType, setQrType] = useState<QRType>('text');
-  const [vcardData, setVcardData] = useState<VCardData>({
-    firstName: '',
-    lastName: '',
-    organization: '',
-    title: '',
-    phone: '',
-    email: '',
-    website: '',
-    address: '',
-  });
-  const [colors, setColors] = useState<ColorOptions>({
-    foregroundColor: '#000000',
-    backgroundColor: '#ffffff',
-    transparentBackground: false,
-  });
-  const [qrSettings, setQrSettings] = useState<QRSettingsType>({
-    errorCorrectionLevel: 'M',
-    size: 300,
-    margin: 1,
-    quality: 0.92,
-  });
+  const [vcardData, setVcardData] = useState<VCardData>(VCARD_DEFAULTS);
+  const [colors, setColors] = useState<ColorOptions>(COLOR_DEFAULTS);
+  const [qrSettings, setQrSettings] = useState<QRSettingsType>(QR_SETTINGS_DEFAULTS);
   const [settingsExpanded, setSettingsExpanded] = useState(false);
 
   const { canvasRef, showQRCode, error, generateQRCode, downloadQRCode } =

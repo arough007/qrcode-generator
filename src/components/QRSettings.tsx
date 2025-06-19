@@ -1,5 +1,10 @@
 import React from 'react';
 import { QRSettings as QRSettingsType } from '../types';
+import {
+  QR_SIZE_LIMITS,
+  QR_MARGIN_LIMITS,
+  QR_QUALITY_LIMITS,
+} from '../constants';
 
 interface QRSettingsProps {
   settings: QRSettingsType;
@@ -59,9 +64,9 @@ const QRSettings: React.FC<QRSettingsProps> = ({
               <input
                 type="range"
                 id="size"
-                min="200"
-                max="600"
-                step="50"
+                min={QR_SIZE_LIMITS.min}
+                max={QR_SIZE_LIMITS.max}
+                step={QR_SIZE_LIMITS.step}
                 value={settings.size}
                 onChange={e =>
                   onSettingsChange('size', parseInt(e.target.value))
@@ -80,9 +85,9 @@ const QRSettings: React.FC<QRSettingsProps> = ({
               <input
                 type="range"
                 id="margin"
-                min="0"
-                max="4"
-                step="1"
+                min={QR_MARGIN_LIMITS.min}
+                max={QR_MARGIN_LIMITS.max}
+                step={QR_MARGIN_LIMITS.step}
                 value={settings.margin}
                 onChange={e =>
                   onSettingsChange('margin', parseInt(e.target.value))
@@ -101,9 +106,9 @@ const QRSettings: React.FC<QRSettingsProps> = ({
               <input
                 type="range"
                 id="quality"
-                min="0.1"
-                max="1"
-                step="0.1"
+                min={QR_QUALITY_LIMITS.min}
+                max={QR_QUALITY_LIMITS.max}
+                step={QR_QUALITY_LIMITS.step}
                 value={settings.quality}
                 onChange={e =>
                   onSettingsChange('quality', parseFloat(e.target.value))
