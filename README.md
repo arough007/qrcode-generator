@@ -6,20 +6,23 @@ A modern, responsive TypeScript web application for generating customizable QR c
 
 - 🎨 **Customizable Colors**: Choose any color for the QR code and background
 - 🔍 **Transparent Background**: Option to use transparent backgrounds
-- 📱 **Responsive Design**: Works perfectly on desktop and mobile devices
+- 📱 **Responsive Design**: Works perfectly on desktop and mobile devices with optimized layouts
 - ⚡ **Real-time Preview**: See changes as you type with debounced updates
-- 💾 **Download Support**: Save QR codes as PNG images
+- 💾 **Download Support**: Save QR codes as PNG images with smart button states
 - 📇 **vCard Support**: Generate QR codes for contact information
-- ⚙️ **Advanced Settings**: Configurable error correction, size, margin, and quality
+- ⚙️ **Advanced Settings Modal**: Configurable error correction, size, margin, and quality in a centered modal
 - 🛡️ **Error Boundary**: Graceful error handling and recovery
 - 🚀 **Fast & Modern**: Built with TypeScript and Vite
+- 👻 **Skeleton Placeholder**: Visual QR code placeholder with blur effect while editing
+- 🖥️ **Desktop Optimized**: Two-column layout for better desktop experience
+- 🎯 **Smart UX**: Disabled states, tooltips, and smooth transitions
 
 ## Technologies Used
 
 - **TypeScript** - Type-safe JavaScript
 - **Vite** - Fast build tool and dev server
 - **QRCode Library** - Reliable QR code generation
-- **Modern CSS** - Beautiful, responsive design
+- **Modern CSS** - Beautiful, responsive design with backdrop filters
 - **Vitest** - Fast unit testing framework
 - **React Testing Library** - Component testing utilities
 
@@ -63,8 +66,10 @@ npm run dev
 
 ### Customization Options
 - **Colors**: Select QR code and background colors, or enable transparency
-- **Advanced Settings**: Configure error correction level, size (200-600px), margin, and quality
+- **Advanced Settings Modal**: Configure error correction level, size (200-600px), margin, and quality in a centered modal with backdrop blur
 - **Real-time Preview**: Changes update automatically with a 500ms debounce
+- **Skeleton Placeholder**: Blurred QR code placeholder shows while editing
+- **Smart Download**: Button is disabled when no QR code is generated, with helpful tooltips
 
 ## Available Scripts
 
@@ -81,12 +86,13 @@ npm run dev
 
 ## Testing
 
-This project includes a comprehensive test suite with 40+ tests covering:
+This project includes a comprehensive test suite with 47 tests covering:
 
 - **Component Tests**: All React components are thoroughly tested
 - **Hook Tests**: Custom hooks like `useDebounce` are fully covered
 - **Integration Tests**: End-to-end component interactions
 - **User Interaction Tests**: Realistic user behavior simulation
+- **Modal Functionality**: Advanced settings modal behavior and accessibility
 
 The test suite uses Vitest and React Testing Library for fast, reliable testing with excellent developer experience.
 
@@ -100,6 +106,7 @@ This project follows modern React best practices with a well-organized, maintain
 - **Utils**: Pure utility functions for business logic
 - **Constants**: Centralized configuration and magic number elimination
 - **Types**: Comprehensive TypeScript interfaces and type safety
+- **Responsive Layouts**: Desktop-optimized two-column layout with smooth transitions
 
 ### 🏗️ **Key Patterns**
 - **Custom Hooks**: `useFormState`, `useQRCode`, `useDebounce`
@@ -107,6 +114,26 @@ This project follows modern React best practices with a well-organized, maintain
 - **Modular CSS**: Component-based stylesheets for maintainability
 - **Type Safety**: Enhanced TypeScript with specific types and validation
 - **Separation of Concerns**: Clear boundaries between UI, logic, and data
+- **Component Splitting**: InputControls and SettingsControls for better organization
+- **Modal Architecture**: Centered modal with overlay and backdrop blur effects
+
+## User Experience Features
+
+### Desktop Layout
+- **Two-Column Design**: Controls on the left, QR display and settings on the right
+- **Responsive Breakpoints**: Smooth transitions between desktop, tablet, and mobile layouts
+- **Optimized Space Usage**: Better utilization of horizontal screen space
+
+### Smart Interactions
+- **Skeleton Placeholder**: Blurred dummy QR code shows the expected size while editing
+- **Modal Settings**: Advanced settings open in a centered modal with backdrop blur
+- **Disabled States**: Download button is disabled with helpful tooltips when no QR code exists
+- **Smooth Animations**: Fade-in effects and scale animations for better user feedback
+
+### Mobile Optimization
+- **Reordered Layout**: QR display appears first on mobile for better UX
+- **Touch-Friendly**: Modal and controls optimized for touch interactions
+- **Responsive Modal**: Settings modal adapts to smaller screens automatically
 
 ## QR Code Options
 
