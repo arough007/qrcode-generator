@@ -86,7 +86,7 @@ const ColorControls: React.FC<ColorControlsProps> = ({
           <span className="toggle-label">Use transparent background</span>
         </label>
         <p className="toggle-description">
-          Enable this to remove the background color and make the QR code transparent
+          Enable this to remove the background color
         </p>
       </div>
     </div>
