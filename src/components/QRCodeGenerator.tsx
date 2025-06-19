@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useQRCode } from '../hooks/useQRCode';
 import { useFormState } from '../hooks/useFormState';
 import Controls from './Controls';
+import QRControls from './QRControls';
 import QRCodeDisplay from './QRCodeDisplay';
 import { DEBOUNCE_DELAY } from '../constants';
 
@@ -54,6 +55,8 @@ const QRCodeGenerator: React.FC = () => {
             qrSettings={formState.qrSettings}
             onDownload={downloadQRCode}
           />
+          
+          <QRControls formState={formState} formActions={formActions} />
         </div>
       </div>
     </div>
