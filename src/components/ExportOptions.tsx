@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { DownloadFormat } from '../types';
 
 interface ExportOptionsProps {
@@ -14,6 +14,14 @@ const ExportOptions: React.FC<ExportOptionsProps> = ({
   onDownload,
   disabled = false,
 }) => {
+  const formatRefs = useRef<Record<DownloadFormat, HTMLDivElement | null>>({
+    png: null,
+    jpg: null,
+    jpeg: null,
+    svg: null,
+    pdf: null,
+  });
+
   const formats: {
     value: DownloadFormat;
     label: string;
@@ -41,24 +49,82 @@ const ExportOptions: React.FC<ExportOptionsProps> = ({
     },
   ];
 
+  // Handle keyboard navigation for format selection
+  const handleKeyDown = (e: React.KeyboardEvent, format: DownloadFormat) => {
+    if (disabled) return;
+
+    const currentIndex = formats.findIndex(f => f.value === format);
+
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        onFormatChange(format);
+        break;
+
+      case 'ArrowRight':
+      case 'ArrowDown':
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % formats.length;
+        const nextFormat = formats[nextIndex].value;
+        formatRefs.current[nextFormat]?.focus();
+        break;
+
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        e.preventDefault();
+        const prevIndex =
+          currentIndex === 0 ? formats.length - 1 : currentIndex - 1;
+        const prevFormat = formats[prevIndex].value;
+        formatRefs.current[prevFormat]?.focus();
+        break;
+
+      case 'Home':
+        e.preventDefault();
+        formatRefs.current[formats[0].value]?.focus();
+        break;
+
+      case 'End':
+        e.preventDefault();
+        formatRefs.current[formats[formats.length - 1].value]?.focus();
+        break;
+    }
+  };
+
   return (
     <div className="export-options">
       <div className="export-header">
-        <h3 className="export-title">Export Format</h3>
+        <h3 id="export-title" className="export-title">
+          Export Format
+        </h3>
       </div>
 
-      <div className="format-grid">
+      <div
+        className="format-grid"
+        role="radiogroup"
+        aria-labelledby="export-title"
+      >
         {formats.map(format => (
           <div
             key={format.value}
+            ref={el => {
+              formatRefs.current[format.value] = el;
+            }}
             className={`format-option ${
               selectedFormat === format.value ? 'selected' : ''
             } ${disabled ? 'disabled' : ''}`}
+            role="radio"
+            aria-checked={selectedFormat === format.value}
+            aria-describedby={`format-desc-${format.value}`}
+            tabIndex={disabled ? -1 : selectedFormat === format.value ? 0 : -1}
             onClick={() => !disabled && onFormatChange(format.value)}
+            onKeyDown={e => handleKeyDown(e, format.value)}
           >
             <div className="format-info">
               <span className="format-name">{format.label}</span>
-              <small className="format-desc">{format.description}</small>
+              <small id={`format-desc-${format.value}`} className="format-desc">
+                {format.description}
+              </small>
             </div>
           </div>
         ))}

@@ -100,6 +100,24 @@
   border-color: #e0e0e0;
 }
 
+/* Focus indicators for keyboard navigation */
+.format-option:focus {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.format-option:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Enhanced focus state for selected option */
+.format-option.selected:focus,
+.format-option.selected:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
 .format-info {
   display: flex;
   flex-direction: column;
