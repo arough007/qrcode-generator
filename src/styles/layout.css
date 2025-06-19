@@ -1,0 +1,281 @@
+/* Consolidated Layout Styles */
+
+/* ==========================================================================
+   Main Layout
+   ========================================================================== */
+
+.desktop-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  transition: all 0.3s ease;
+}
+
+.controls-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 400px;
+  transition: all 0.3s ease;
+}
+
+.output-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 600px;
+  transition: all 0.3s ease;
+  gap: 30px;
+}
+
+.qr-generator {
+  width: 100%;
+  min-width: 0;
+}
+
+.content {
+  width: 100%;
+  min-width: 0;
+}
+
+.controls-section {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   QR Code Display
+   ========================================================================== */
+
+.qr-output {
+  text-align: center;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border: 2px solid #e9ecef;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.qr-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: white;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.qr-canvas:hover {
+  transform: scale(1.02);
+}
+
+.qr-placeholder {
+  width: 300px;
+  height: 300px;
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #6c757d;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: 600;
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8d7da;
+  border-radius: 8px;
+  border: 1px solid #f5c2c7;
+}
+
+/* ==========================================================================
+   Settings & Controls Layout
+   ========================================================================== */
+
+.output-settings {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.output-panel .output-section {
+  width: 100%;
+  max-width: 500px;
+}
+
+.output-panel .qr-output {
+  margin-top: 20px;
+}
+
+.input-content-container {
+  min-height: 400px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.text-input-container {
+  min-height: 120px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.vcard-form {
+  min-height: 400px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   Color Controls
+   ========================================================================== */
+
+.color-controls {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.color-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-input {
+  width: 60px;
+  height: 40px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-input:hover {
+  transform: scale(1.05);
+}
+
+.color-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .desktop-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .output-panel {
+    min-height: auto;
+    order: -1;
+    gap: 20px;
+  }
+  
+  .controls-panel {
+    order: 1;
+  }
+  
+  .output-settings {
+    order: 2;
+  }
+  
+  .color-controls {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-layout {
+    gap: 20px;
+  }
+  
+  .controls-panel {
+    gap: 15px;
+  }
+  
+  .qr-output {
+    padding: 20px;
+  }
+  
+  .qr-placeholder {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 901px) {
+  .controls-panel {
+    max-width: 600px;
+  }
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.controls-panel,
+.output-panel {
+  transition: all 0.3s ease;
+}
+
+.controls-panel > * {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form-group {
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+  .output-panel .output-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .controls-panel > * {
+    margin-bottom: 20px;
+  }
+  
+  .controls-panel > *:last-child {
+    margin-bottom: 0;
+  }
+} 

@@ -1,11 +1,7 @@
-/* Import modular CSS styles */
+/* Import consolidated CSS styles */
 @import './styles/base.css';
-@import './styles/components/forms.css';
-@import './styles/components/color-controls.css';
-@import './styles/components/buttons.css';
-@import './styles/components/qr-display.css';
-@import './styles/components/qr-settings.css';
+@import './styles/components.css';
+@import './styles/layout.css';
 @import './styles/components/error-boundary.css';
-@import './styles/components/ui.css';
-@import './styles/components/desktop-layout.css';
+@import './styles/components/qr-settings.css';
 @import './styles/utils/responsive.css';
