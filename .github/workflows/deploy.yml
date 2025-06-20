@@ -30,7 +30,7 @@ jobs:
           # Get list of changed files
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           echo "Changed files: $CHANGED_FILES"
-          
+
           # Check if any relevant files were changed
           if echo "$CHANGED_FILES" | grep -E "(^src/|^index\.html$|^package\.json$|^package-lock\.json$|^vite\.config\.ts$|^tsconfig\.json$)" > /dev/null; then
             echo "should-deploy=true" >> $GITHUB_OUTPUT
