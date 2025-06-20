@@ -17,8 +17,8 @@ services:
       retries: 3
       start_period: 40s
     networks:
-      - qrcode-network
+      - proxynet
 
 networks:
-  qrcode-network:
-    driver: bridge 
+  proxynet:
+    external: true 
