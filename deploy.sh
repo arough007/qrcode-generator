@@ -52,7 +52,10 @@ if [ "$INITIAL_HASH" != "$CURRENT_HASH" ]; then
     # Restore stashed changes before restarting
     if [ "$STASHED" = true ]; then
         echo "📋 Restoring stashed changes before restart..."
-        git stash pop
+        if ! git stash pop; then
+            echo "⚠️  Could not automatically restore stashed changes (likely due to conflicts)."
+            echo "💡 Your changes are still available in the stash. Use 'git stash list' to see them."
+        fi
     fi
     
     # Restart the script with the same arguments
@@ -63,7 +66,11 @@ fi
 # Restore stashed changes if any
 if [ "$STASHED" = true ]; then
     echo "📋 Restoring stashed changes..."
-    git stash pop
+    if ! git stash pop; then
+        echo "⚠️  Could not automatically restore stashed changes (likely due to conflicts)."
+        echo "💡 Your changes are still available in the stash. Use 'git stash list' to see them."
+        echo "💡 You can manually apply them later with 'git stash apply' or 'git stash pop'."
+    fi
 fi
 
 # Install/update dependencies
