@@ -117,12 +117,23 @@ fi
 
 # Install/update dependencies
 printf "📦 Installing dependencies... "
-if npm ci --silent 2>/dev/null; then
+npm_output=$(npm ci 2>&1)
+npm_status=$?
+
+if [ $npm_status -eq 0 ]; then
     echo "✓"
+    # Show warnings/errors if any (but not successful test output)
+    if [[ "$npm_output" == *"FAIL"* ]] || [[ "$npm_output" == *"ERROR"* ]] || [[ "$npm_output" == *"✗"* ]]; then
+        echo "npm check warnings/errors:"
+        echo "$npm_output"
+    elif [ "$VERBOSE" = true ]; then
+        echo "npm output:"
+        echo "$npm_output"
+    fi
 else
     echo "❌"
-    echo "Dependency installation failed. Running with output:"
-    npm ci
+    echo "Dependency installation failed:"
+    echo "$npm_output"
     exit 1
 fi
 
