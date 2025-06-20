@@ -1,27 +1,44 @@
 # QR Code Generator
 
-A modern, responsive TypeScript web application for generating customizable QR codes with color options and transparency support.
+A modern, accessible TypeScript web application for generating customizable QR codes with multiple export formats and comprehensive accessibility features.
 
 ## Features
 
-- 🎨 **Customizable Colors**: Choose any color for the QR code and background
-- 🔍 **Transparent Background**: Option to use transparent backgrounds
-- 📱 **Responsive Design**: Works perfectly on desktop and mobile devices with optimized layouts
-- ⚡ **Real-time Preview**: See changes as you type with debounced updates
-- 💾 **Download Support**: Save QR codes as PNG images with smart button states
-- 📇 **vCard Support**: Generate QR codes for contact information
-- ⚙️ **Advanced Settings Modal**: Configurable error correction, size, margin, and quality in a centered modal
-- 🛡️ **Error Boundary**: Graceful error handling and recovery
-- 🚀 **Fast & Modern**: Built with TypeScript and Vite
-- 👻 **Skeleton Placeholder**: Visual QR code placeholder with blur effect while editing
-- 🖥️ **Desktop Optimized**: Two-column layout for better desktop experience
-- 🎯 **Smart UX**: Disabled states, tooltips, and smooth transitions
+### 🎨 **Core Functionality**
+- **Customizable Colors**: Choose any color for the QR code and background
+- **Transparent Background**: Option to use transparent backgrounds
+- **Real-time Preview**: See changes as you type with debounced updates
+- **vCard Support**: Generate QR codes for contact information
+- **Advanced Settings Modal**: Configurable error correction, size, margin, and quality
+
+### 📱 **User Experience**
+- **Responsive Design**: Works perfectly on desktop and mobile devices with optimized layouts
+- **Desktop Optimized**: Two-column layout for better desktop experience
+- **Skeleton Placeholder**: Visual QR code placeholder with blur effect while editing
+- **Smart UX**: Disabled states, tooltips, and smooth transitions
+- **Error Boundary**: Graceful error handling and recovery
+
+### 💾 **Export Options**
+- **Multiple Formats**: PNG, JPEG, SVG, and PDF export support
+- **Format Selection**: Interactive format cards with descriptions
+- **Smart Naming**: Automatic file naming based on QR code type
+- **Professional Quality**: Optimized output for each format
+
+### ♿ **Accessibility Features**
+- **WCAG 2.1 AA Compliant**: Meets accessibility guidelines
+- **Skip Navigation**: Skip links for keyboard navigation
+- **Focus Management**: Proper focus trapping in modals
+- **Screen Reader Support**: Full ARIA attributes and semantic HTML
+- **Keyboard Navigation**: Complete keyboard accessibility
+- **High Contrast**: Accessible color combinations
 
 ## Technologies Used
 
 - **TypeScript** - Type-safe JavaScript
 - **Vite** - Fast build tool and dev server
 - **QRCode Library** - Reliable QR code generation
+- **jsPDF** - Professional PDF generation
+- **Canvas2SVG** - Vector SVG export
 - **Modern CSS** - Beautiful, responsive design with backdrop filters
 - **Vitest** - Fast unit testing framework
 - **React Testing Library** - Component testing utilities
@@ -57,22 +74,28 @@ npm run dev
 1. **Select Type**: Choose "Text" from the dropdown
 2. **Enter Text**: Type or paste any text, URL, or data you want to encode
 3. **Customize**: Use color controls and advanced settings
-4. **Download**: Click "Download QR Code" to save as PNG
+4. **Export**: Choose your preferred format (PNG, JPEG, SVG, PDF) and download
 
 ### Contact (vCard) QR Codes
 
 1. **Select Type**: Choose "Contact (vCard)" from the dropdown
 2. **Fill Details**: Enter contact information (name, phone, email, etc.)
 3. **Customize**: Adjust colors and QR settings as needed
-4. **Download**: Save the contact QR code
+4. **Export**: Save the contact QR code in your preferred format
 
 ### Customization Options
 
 - **Colors**: Select QR code and background colors, or enable transparency
-- **Advanced Settings Modal**: Configure error correction level, size (200-600px), margin, and quality in a centered modal with backdrop blur
+- **Advanced Settings Modal**: Configure error correction level, size (200-600px), margin, and quality
+- **Export Formats**: Choose from PNG, JPEG, SVG, or PDF based on your needs
 - **Real-time Preview**: Changes update automatically with a 500ms debounce
-- **Skeleton Placeholder**: Blurred QR code placeholder shows while editing
-- **Smart Download**: Button is disabled when no QR code is generated, with helpful tooltips
+
+## Export Formats
+
+- **PNG**: Best for web usage and high-quality images
+- **JPEG**: Compressed format for smaller file sizes
+- **SVG**: Vector format perfect for print and scalable graphics
+- **PDF**: Professional document format, centered on A4 page
 
 ## Available Scripts
 
@@ -89,15 +112,38 @@ npm run dev
 
 ## Testing
 
-This project includes a comprehensive test suite with 47 tests covering:
+This project includes a comprehensive test suite with **42 tests** covering:
 
 - **Component Tests**: All React components are thoroughly tested
 - **Hook Tests**: Custom hooks are fully covered
 - **Integration Tests**: End-to-end component interactions
 - **User Interaction Tests**: Realistic user behavior simulation
 - **Modal Functionality**: Advanced settings modal behavior and accessibility
+- **Responsive Layout**: Mobile and desktop layout testing
 
 The test suite uses Vitest and React Testing Library for fast, reliable testing with excellent developer experience.
+
+## Accessibility
+
+This application is built with accessibility as a core principle:
+
+### **WCAG 2.1 AA Compliance**
+- High contrast color combinations
+- Proper semantic HTML structure
+- Comprehensive ARIA attributes
+- Keyboard navigation support
+
+### **Focus Management**
+- Skip links for quick navigation
+- Focus trapping in modals
+- Logical tab order
+- Visible focus indicators
+
+### **Screen Reader Support**
+- Descriptive labels and instructions
+- Status updates for dynamic content
+- Proper heading hierarchy
+- Alternative text for images
 
 ## Architecture
 
@@ -106,21 +152,20 @@ This project follows modern React best practices with a well-organized, maintain
 ### 📁 **Modular Structure**
 
 - **Components**: Organized by feature with reusable UI components
-- **Hooks**: Custom hooks for state management and side effects
-- **Utils**: Pure utility functions for business logic
+- **Hooks**: Custom hooks for state management and side effects (`useFormState`, `useQRCode`, `useModalFocus`)
+- **Utils**: Pure utility functions for business logic and export functionality
 - **Constants**: Centralized configuration and magic number elimination
 - **Types**: Comprehensive TypeScript interfaces and type safety
 - **Responsive Layouts**: Desktop-optimized two-column layout with smooth transitions
 
 ### 🏗️ **Key Patterns**
 
-- **Custom Hooks**: `useFormState`, `useQRCode`
+- **Custom Hooks**: Encapsulated logic for QR generation, form state, and modal focus
 - **Error Boundaries**: Graceful error handling and recovery
 - **Modular CSS**: Component-based stylesheets for maintainability
 - **Type Safety**: Enhanced TypeScript with specific types and validation
 - **Separation of Concerns**: Clear boundaries between UI, logic, and data
-- **Component Splitting**: InputControls and SettingsControls for better organization
-- **Modal Architecture**: Centered modal with overlay and backdrop blur effects
+- **Accessibility First**: Built-in accessibility features and ARIA support
 
 ## User Experience Features
 
@@ -134,7 +179,8 @@ This project follows modern React best practices with a well-organized, maintain
 
 - **Skeleton Placeholder**: Blurred dummy QR code shows the expected size while editing
 - **Modal Settings**: Advanced settings open in a centered modal with backdrop blur
-- **Disabled States**: Download button is disabled with helpful tooltips when no QR code exists
+- **Export Options**: Interactive format selection with descriptions and icons
+- **Disabled States**: Smart button states with helpful tooltips
 - **Smooth Animations**: Fade-in effects and scale animations for better user feedback
 
 ### Mobile Optimization
@@ -148,7 +194,7 @@ This project follows modern React best practices with a well-organized, maintain
 The application supports various QR code features:
 
 - **Error Correction**: Configurable levels (L/M/Q/H) with 7-30% damage resistance
-- **Output Format**: PNG with configurable quality (10-100%)
+- **Output Formats**: PNG, JPEG, SVG, PDF with configurable quality
 - **Size**: Adjustable from 200x200 to 600x600 pixels
 - **Margin**: Configurable margin (0-4 units)
 - **Colors**: Full RGB color support with alpha channel for transparency
@@ -177,4 +223,5 @@ The GPL v3 is a copyleft license that guarantees end users the freedom to run, s
 ## Acknowledgments
 
 - Built with the excellent [node-qrcode](https://www.npmjs.com/package/qrcode) library
-- Inspired by modern web design principles
+- Export functionality powered by [jsPDF](https://github.com/parallax/jsPDF) and [Canvas2SVG](https://github.com/gliffy/canvas2svg)
+- Inspired by modern web design and accessibility principles

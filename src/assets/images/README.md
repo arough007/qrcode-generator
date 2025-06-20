@@ -2,30 +2,36 @@
 
 ## Dummy QR Code Image
 
-⚠️ **IMPORTANT**: Place the dummy QR code image in `public/assets/images/dummy-qr.png` instead of this folder.
+✅ **CONFIGURED**: The dummy QR code image is properly placed in `public/assets/images/dummy-qr.png`.
 
-This folder is kept for development assets, but the actual image should be in the public folder so Vite can serve it properly.
+This image is used as a skeleton placeholder with blur effect while users are editing their QR code input, providing visual feedback about the expected QR code size and position.
 
-### Requirements:
+### Current Implementation:
 
-- **Filename**: `dummy-qr.png` (exactly this name)
-- **Format**: PNG (recommended for transparency support)
-- **Size**: Any size (will be automatically scaled)
-- **Content**: A sample QR code that will be blurred and used as a placeholder
+- **Filename**: `dummy-qr.png` ✅
+- **Location**: `public/assets/images/dummy-qr.png` ✅
+- **Format**: PNG with transparency support ✅
+- **Size**: Optimized for web usage ✅
+- **Usage**: Blurred placeholder in QR code display area ✅
 
-### Recommendations:
+### Purpose:
 
-- Use a square image (1:1 aspect ratio)
-- 300x300px or larger for good quality
-- Black QR code on white/transparent background
-- Can be any QR code content (doesn't matter what it encodes)
+- **Visual Feedback**: Shows users where the QR code will appear
+- **Size Reference**: Demonstrates the expected QR code dimensions
+- **Smooth UX**: Provides visual continuity while QR code is generating
+- **Loading State**: Indicates the QR code generation area
 
-### Fallback:
+### Technical Details:
 
-If no `dummy-qr.png` file is found, the component will automatically fall back to a simple geometric pattern.
+- **Blur Effect**: Applied via CSS `filter: blur()` for skeleton effect
+- **Responsive**: Scales appropriately across different screen sizes
+- **Accessibility**: Marked with `aria-hidden="true"` as decorative
+- **Performance**: Optimized PNG for fast loading
 
-### Example QR Code Sources:
+### Fallback Behavior:
 
-- Generate one at: https://qr-code-generator.com/
-- Use any existing QR code image you have
-- Create one with the app itself and save it
+If the image fails to load, the component gracefully falls back to a simple geometric pattern, ensuring the user experience remains smooth regardless of network conditions.
+
+### Integration:
+
+The image is automatically served by Vite from the public folder and integrated into the QRCodeDisplay component as part of the skeleton loading state.
