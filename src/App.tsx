@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="container">
       <a
-        href="https://github.com/arough007/qrcode"
+        href="https://github.com/arough007/qrcode-generator"
         target="_blank"
         rel="noopener noreferrer"
         className="github-link"
