@@ -98,12 +98,13 @@ The export system works by:
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run type-check` - Run TypeScript type checking
-- `npm test` - Run test suite in watch mode
+- `npm run test:run` - Run test suite once
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:ui` - Run tests with UI interface
 - `npm run test:coverage` - Run tests with coverage report
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
+- `npm run check` - Run type-check, format-check, and tests (recommended for CI/CD)
 
 ## Testing
 
@@ -131,16 +132,19 @@ The test suite uses Vitest and React Testing Library for fast, reliable testing 
 
 ```bash
 # Run all tests once
-npm test -- --run
+npm run test:run
 
 # Run tests in watch mode
-npm test
+npm run test:watch
 
 # Run tests with UI
 npm run test:ui
 
 # Run tests with coverage
 npm run test:coverage
+
+# Run all checks (type-check, format-check, and tests)
+npm run check
 ```
 
 ## Accessibility
@@ -298,11 +302,10 @@ We welcome contributions to the QR Code Generator! Here's how you can help:
 2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
 3. **Make your changes**: Follow our coding standards
 4. **Add tests**: Ensure your changes are well-tested
-5. **Run the test suite**: `npm test`
-6. **Check code formatting**: `npm run format:check`
-7. **Commit your changes**: `git commit -m 'Add amazing feature'`
-8. **Push to the branch**: `git push origin feature/amazing-feature`
-9. **Open a Pull Request**
+5. **Run all checks**: `npm run check` (includes type-check, format-check, and tests)
+6. **Commit your changes**: `git commit -m 'Add amazing feature'`
+7. **Push to the branch**: `git push origin feature/amazing-feature`
+8. **Open a Pull Request**
 
 ### Development Setup
 
@@ -317,11 +320,11 @@ npm install
 # Start development server
 npm run dev
 
-# Run tests
-npm test
+# Run tests once
+npm run test:run
 
-# Check formatting
-npm run format:check
+# Run all checks (recommended)
+npm run check
 ```
 
 ### Code Standards

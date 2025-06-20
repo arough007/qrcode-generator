@@ -129,16 +129,19 @@ The test suite covers:
 
 ```bash
 # Run all tests once
-npm test -- --run
+npm run test:run
 
 # Run tests in watch mode
-npm test
+npm run test:watch
 
 # Run tests with UI
 npm run test:ui
 
 # Run tests with coverage
 npm run test:coverage
+
+# Run all checks (type-check, format-check, and tests)
+npm run check
 ```
 
 ## Test Statistics
