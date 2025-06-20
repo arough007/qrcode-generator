@@ -29,6 +29,47 @@ body {
   min-width: 0; /* Allow container to shrink */
   overflow-x: hidden; /* Prevent horizontal overflow */
   box-sizing: border-box;
+  position: relative; /* Add positioning context for absolute positioning */
+}
+
+/* GitHub Link Styles */
+.github-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #4a5568;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  z-index: 10;
+}
+
+.github-link:hover {
+  color: #2d3748;
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.github-link:focus {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+.github-link svg {
+  transition: transform 0.3s ease;
+}
+
+.github-link:hover svg {
+  transform: scale(1.1);
 }
 
 /* Typography System */
@@ -181,4 +222,41 @@ h1:hover .qr-icon {
   top: 0;
   outline: 3px solid #667eea;
   outline-offset: 2px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .github-link {
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .github-link svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-link {
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .github-link svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
 }
