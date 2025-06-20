@@ -26,17 +26,20 @@ This document contains detailed technical information for developers working wit
 ### Installation
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/yourusername/qrcode-generator.git
+git clone https://github.com/arough007/qrcode-generator.git
 cd qrcode-generator
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -145,18 +148,21 @@ npm run test:coverage
 This application is built with accessibility as a core principle and meets **WCAG 2.1 AA** compliance standards.
 
 ### **WCAG 2.1 AA Compliance**
+
 - High contrast color combinations
 - Proper semantic HTML structure
 - Comprehensive ARIA attributes
 - Keyboard navigation support
 
 ### **Focus Management**
+
 - Skip links for quick navigation
 - Focus trapping in modals
 - Logical tab order
 - Visible focus indicators
 
 ### **Screen Reader Support**
+
 - Descriptive labels and instructions
 - Status updates for dynamic content
 - Proper heading hierarchy
@@ -165,16 +171,19 @@ This application is built with accessibility as a core principle and meets **WCA
 ### **Accessibility Features Implementation**
 
 #### Skip Navigation
+
 - Skip links in QRCodeGenerator component
 - Allows keyboard users to quickly navigate to main content
 - WCAG 2.1 AA compliance
 
 #### Focus Management
+
 - Modal focus trapping in QRSettings modal
 - Tab order: Logical keyboard navigation throughout the app
 - Focus indicators: Visible focus states for all interactive elements
 
 #### ARIA Support
+
 - Semantic HTML: Proper use of headings, sections, and landmarks
 - ARIA attributes: Labels, descriptions, and roles where needed
 - Screen reader compatibility: Comprehensive screen reader support
@@ -204,12 +213,14 @@ This project follows modern React best practices with a well-organized, maintain
 ### Component Architecture
 
 #### QRCodeGenerator (Main Component)
+
 - Orchestrates the entire QR code generation flow
 - Manages text input, QR type, vCard data, and color options
 - Uses custom hooks for QR code generation and debouncing
 - Includes skip navigation links and proper ARIA structure
 
 #### Core Components
+
 - **QRTypeSelector**: Dropdown for Text/URL and vCard modes
 - **TextInput**: Textarea for text/URL input with proper labeling
 - **VCardForm**: Contact information form with grid layout
@@ -219,6 +230,7 @@ This project follows modern React best practices with a well-organized, maintain
 - **QRSettings**: Advanced settings modal with focus management
 
 #### Custom Hooks
+
 - **useQRCode**: QR code generation logic with multiple export formats
 - **useFormState**: Form state management for text and vCard inputs
 - **useModalFocus**: Modal focus management with keyboard navigation
@@ -296,7 +308,7 @@ We welcome contributions to the QR Code Generator! Here's how you can help:
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/qrcode-generator.git
+git clone https://github.com/arough007/qrcode-generator.git
 cd qrcode-generator
 
 # Install dependencies
@@ -357,4 +369,4 @@ For feature requests, please describe:
 - **[Component Documentation](./src/components/README.md)** - Component architecture
 - **[Test Documentation](./src/test/test-summary.md)** - Testing strategy and coverage
 
-For questions or support, please [open an issue](https://github.com/yourusername/qrcode-generator/issues) on GitHub. 
+For questions or support, please [open an issue](https://github.com/arough007/qrcode-generator/issues) on GitHub.

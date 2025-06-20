@@ -2,30 +2,34 @@
 
 > A modern, accessible web application for generating customizable QR codes with multiple export formats and comprehensive accessibility features.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/yourusername/qrcode-generator)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/arough007/qrcode-generator)
 [![WCAG 2.1 AA](https://img.shields.io/badge/WCAG-2.1%20AA-blue)](https://www.w3.org/WAI/WCAG21/quickref/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## ✨ Features
 
 ### 🎨 **Core Functionality**
+
 - **Customizable Colors**: Choose any color for the QR code and background
 - **Transparent Background**: Option to use transparent backgrounds
 - **Real-time Preview**: See changes as you type with debounced updates
 - **vCard Support**: Generate QR codes for contact information
 
 ### 💾 **Export Options**
+
 - **Multiple Formats**: PNG, JPEG, SVG, and PDF export support
 - **Professional Quality**: Optimized output for each format
 - **Smart Naming**: Automatic file naming based on QR code type
 
 ### ♿ **Accessibility Features**
+
 - **WCAG 2.1 AA Compliant**: Meets accessibility guidelines
 - **Skip Navigation**: Skip links for keyboard navigation
 - **Focus Management**: Proper focus trapping in modals
 - **Screen Reader Support**: Full ARIA attributes and semantic HTML
 
 ### 📱 **User Experience**
+
 - **Responsive Design**: Works perfectly on desktop and mobile devices
 - **Desktop Optimized**: Two-column layout for better desktop experience
 - **Smart UX**: Disabled states, tooltips, and smooth transitions
@@ -34,7 +38,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/qrcode-generator.git
+git clone https://github.com/arough007/qrcode-generator.git
 cd qrcode-generator
 
 # Install dependencies
@@ -91,4 +95,4 @@ We welcome contributions! Please see our [Contributing Guidelines](./DEVELOPMENT
 
 ---
 
-**[📚 View Complete Documentation](./DEVELOPMENT.md)** | **[🐛 Report Issues](https://github.com/yourusername/qrcode-generator/issues)** | **[💡 Request Features](https://github.com/yourusername/qrcode-generator/issues/new)**
+**[📚 View Complete Documentation](./DEVELOPMENT.md)** | **[🐛 Report Issues](https://github.com/arough007/qrcode-generator/issues)** | **[💡 Request Features](https://github.com/arough007/qrcode-generator/issues/new)**
