@@ -11,6 +11,13 @@ Try the QR Code Generator now - no installation required!
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://arough007.github.io/qrcode-generator/)
 
+## 🆓 **Free to Use**
+
+✅ **Completely Free** - No payment required  
+✅ **No Registration** - Start generating QR codes immediately  
+✅ **No Account Required** - Privacy-focused, no personal data collection  
+✅ **Open Source** - Transparent and community-driven
+
 ## ✨ Features
 
 ### 🎨 **Core Functionality**
