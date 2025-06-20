@@ -15,6 +15,14 @@ A fast, accessible QR code generator that works completely in your browser.
 - **Mobile-friendly**: Works great on phones and tablets
 - **Accessible**: Screen reader friendly with keyboard navigation
 
+## 🚀 Host Your Own
+
+Want to host your own version? See **[Self-Hosting Guide →](./HOSTING.md)** for options including:
+
+- **Free static hosting** (Vercel, Netlify, GitHub Pages)
+- **Docker deployment** with included configs
+- **VPS/server setup** with automated deploy script
+
 ## 🛠 For Developers
 
 Want to run locally or contribute? See **[Development Guide →](./DEVELOPMENT.md)**
@@ -30,4 +38,4 @@ npm install && npm run dev
 
 ---
 
-**[🚀 Use the app](https://arough007.github.io/qrcode-generator/)** • **[📚 Developer docs](./DEVELOPMENT.md)** • **[🐛 Report issues](https://github.com/arough007/qrcode-generator/issues)**
+**[🚀 Use the app](https://arough007.github.io/qrcode-generator/)** • **[🏠 Host your own](./HOSTING.md)** • **[📚 Developer docs](./DEVELOPMENT.md)** • **[🐛 Report issues](https://github.com/arough007/qrcode-generator/issues)**
