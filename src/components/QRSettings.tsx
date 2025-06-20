@@ -5,6 +5,7 @@ import {
   QR_MARGIN_LIMITS,
   QR_QUALITY_LIMITS,
 } from '../constants';
+import { useModalFocus } from '../hooks/useModalFocus';
 
 interface QRSettingsProps {
   settings: QRSettingsType;
@@ -22,6 +23,12 @@ const QRSettings: React.FC<QRSettingsProps> = ({
   isExpanded,
   onToggleExpanded,
 }) => {
+  // Use the modal focus management hook
+  const { modalRef } = useModalFocus({
+    isOpen: isExpanded,
+    onClose: onToggleExpanded,
+  });
+
   return (
     <div className="qr-settings">
       <button
@@ -36,9 +43,16 @@ const QRSettings: React.FC<QRSettingsProps> = ({
       {isExpanded && (
         <>
           <div className="settings-modal-overlay" onClick={onToggleExpanded} />
-          <div className="settings-modal">
+          <div
+            className="settings-modal"
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="settings-modal-title"
+            tabIndex={-1}
+          >
             <div className="settings-modal-header">
-              <h3>Advanced QR Settings</h3>
+              <h3 id="settings-modal-title">Advanced QR Settings</h3>
               <button
                 type="button"
                 className="settings-close-btn"
