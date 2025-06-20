@@ -12,6 +12,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor libraries into separate chunks
+          vendor: ['react', 'react-dom'],
+          qr: ['qrcode'],
+          pdf: ['jspdf', 'canvas2svg'],
+        },
+      },
+    },
+    // Increase chunk size warning limit to 1MB for vendor chunks
+    chunkSizeWarningLimit: 1000,
   },
   test: {
     globals: true,
