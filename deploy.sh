@@ -186,13 +186,19 @@ else
     exit 1
 fi
 
-# Wait for container to be ready
-printf "⏳ Starting app... "
-sleep 10
+# Health check - wait for container to be ready
+printf "🔍 Health check... "
+health_check_passed=false
+for i in {1..15}; do
+    if curl -f http://localhost:3001/health > /dev/null 2>&1; then
+        echo "✓"
+        health_check_passed=true
+        break
+    fi
+    sleep 1
+done
 
-# Health check
-if curl -f http://localhost:3001/health > /dev/null 2>&1; then
-    echo "✓"
+if [ "$health_check_passed" = true ]; then
     echo ""
     echo "🎉 Deployment complete!"
     echo "🌐 Available at: http://localhost:3001"
@@ -201,7 +207,7 @@ if curl -f http://localhost:3001/health > /dev/null 2>&1; then
     fi
 else
     echo "❌"
-    echo "Health check failed. Container logs:"
+    echo "Health check failed after 15 seconds. Container logs:"
     docker compose logs
     exit 1
 fi 
