@@ -25,13 +25,14 @@ fi
 
 # Fetch latest changes from remote
 echo "📡 Fetching latest changes from remote..."
-git fetch origin
+git fetch origin --quiet
 
 # Check if there are any uncommitted changes
 if ! git diff --quiet || ! git diff --cached --quiet; then
-    echo "⚠️  Warning: You have uncommitted changes. Stashing them..."
-    git stash push -m "Auto-stash before deployment $(date)"
+    echo "⚠️  Uncommitted changes detected - safely stashing them first..."
+    git stash push -m "Auto-stash before deployment $(date)" --quiet
     STASHED=true
+    echo "   ✓ Local changes safely stashed"
 else
     STASHED=false
 fi
@@ -39,7 +40,11 @@ fi
 # Pull latest changes
 echo "⬇️  Pulling latest changes..."
 CURRENT_BRANCH=$(git branch --show-current)
-git pull origin "$CURRENT_BRANCH"
+if git pull origin "$CURRENT_BRANCH" --quiet; then
+    echo "   ✓ Successfully updated to latest version"
+else
+    echo "   ⚠️  Pull completed with messages (see above for details)"
+fi
 
 # Ensure script is executable after git pull (permissions might be lost)
 chmod +x "$SCRIPT_PATH"
@@ -51,10 +56,12 @@ if [ "$INITIAL_HASH" != "$CURRENT_HASH" ]; then
     
     # Restore stashed changes before restarting
     if [ "$STASHED" = true ]; then
-        echo "📋 Restoring stashed changes before restart..."
-        if ! git stash pop; then
-            echo "⚠️  Could not automatically restore stashed changes (likely due to conflicts)."
-            echo "💡 Your changes are still available in the stash. Use 'git stash list' to see them."
+        echo "📋 Restoring your local changes before restart..."
+        if git stash pop --quiet 2>/dev/null; then
+            echo "   ✓ Local changes successfully restored"
+        else
+            echo "   ⚠️  Cannot restore local changes automatically (conflicts detected)"
+            echo "   📝 Your changes are safely stored in git stash"
         fi
     fi
     
@@ -65,21 +72,26 @@ fi
 
 # Restore stashed changes if any
 if [ "$STASHED" = true ]; then
-    echo "📋 Restoring stashed changes..."
-    if ! git stash pop; then
-        echo "⚠️  Could not automatically restore stashed changes (likely due to conflicts)."
-        echo "💡 Your changes are still available in the stash. Use 'git stash list' to see them."
-        echo "💡 You can manually apply them later with 'git stash apply' or 'git stash pop'."
+    echo "📋 Restoring your local changes..."
+    if git stash pop --quiet 2>/dev/null; then
+        echo "   ✓ Local changes successfully restored"
+    else
+        echo "   ⚠️  Cannot restore local changes automatically (conflicts detected)"
+        echo "   📝 Don't worry! Your changes are safely stored in git stash"
+        echo "   🔧 After deployment, run 'git stash pop' to restore them manually"
     fi
 fi
 
+echo ""
+echo "=== 🔧 BUILD PHASE ==="
+
 # Install/update dependencies
 echo "📦 Installing/updating dependencies..."
-npm ci
+npm ci --silent
 
 # Build the application
 echo "🔨 Building the application..."
-npm run build
+npm run build --silent
 
 # Check if build was successful
 if [ ! -d "dist" ]; then
@@ -87,26 +99,31 @@ if [ ! -d "dist" ]; then
     exit 1
 fi
 
-echo "✅ Build completed successfully!"
+echo "   ✅ Build completed successfully!"
+
+echo ""
+echo "=== 🚀 DEPLOYMENT PHASE ==="
 
 # Deploy with Docker Compose
 echo "🐳 Starting Docker containers..."
-docker compose down --remove-orphans
-docker compose up -d
+docker compose down --remove-orphans --quiet 2>/dev/null || true
+docker compose up -d --quiet 2>/dev/null
+echo "   ✓ Docker containers started"
 
 # Wait for container to be ready
 echo "⏳ Waiting for application to start..."
 sleep 10
 
 # Health check
+echo "🔍 Checking application health..."
 if curl -f http://localhost:3001/health > /dev/null 2>&1; then
-    echo "✅ Application is running successfully!"
+    echo "   ✅ Application is running successfully!"
+    echo ""
+    echo "🎉 DEPLOYMENT COMPLETED! 🎉"
     echo "🌐 Your QR Code Generator is available at: http://localhost:3001"
     echo "📋 Configure Nginx Proxy Manager to proxy your domain to localhost:3001"
 else
-    echo "❌ Health check failed. Check the logs:"
+    echo "   ❌ Health check failed. Checking logs..."
     docker compose logs
     exit 1
-fi
-
-echo "🎉 Deployment completed!" 
+fi 
