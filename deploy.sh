@@ -153,17 +153,25 @@ fi
 
 # Deploy with Docker Compose
 printf "🐳 Starting containers... "
-if docker compose down --remove-orphans --quiet 2>/dev/null && docker compose up -d --quiet 2>/dev/null; then
+docker_output=$(docker compose down --remove-orphans 2>&1 && docker compose up -d 2>&1)
+docker_status=$?
+
+if [ $docker_status -eq 0 ]; then
     echo "✓"
+    # Show warnings if any (always show warnings, regardless of verbose mode)
+    if [[ "$docker_output" == *"WARN"* ]]; then
+        echo "Docker warnings:"
+        echo "$docker_output" | grep "WARN"
+    fi
+    # Show full output only in verbose mode
+    if [ "$VERBOSE" = true ] && [[ "$docker_output" != *"WARN"* ]]; then
+        echo "Docker output:"
+        echo "$docker_output"
+    fi
 else
     echo "❌"
-    if [ "$VERBOSE" = true ]; then
-        echo "Docker output:"
-        docker compose down --remove-orphans
-        docker compose up -d
-    else
-        echo "Docker deployment failed (use -v for details)"
-    fi
+    echo "Docker deployment failed:"
+    echo "$docker_output"
     exit 1
 fi
 
