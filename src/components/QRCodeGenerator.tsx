@@ -39,8 +39,19 @@ const QRCodeGenerator: React.FC = () => {
 
   return (
     <div className="qr-generator">
+      {/* Skip Navigation Links */}
+      <div className="skip-links">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <a href="#qr-code-display" className="skip-link">
+          Skip to QR code
+        </a>
+      </div>
+
       <div className="desktop-layout">
         <section
+          id="main-content"
           className="controls-panel"
           aria-labelledby="input-section-title"
           role="form"
@@ -60,6 +71,7 @@ const QRCodeGenerator: React.FC = () => {
           </h2>
 
           <div
+            id="qr-code-display"
             className="qr-output-area"
             role="region"
             aria-labelledby="qr-display-title"
