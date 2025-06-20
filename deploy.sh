@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # QR Code Generator Deployment Script
-# This script builds the application and deploys it to your Hetzner server
+# This script builds the application and deploys it to your server
 
 set -e  # Exit on any error
 
