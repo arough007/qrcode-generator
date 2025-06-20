@@ -2,9 +2,14 @@
 
 > A modern, accessible web application for generating customizable QR codes with multiple export formats and comprehensive accessibility features.
 
+## 🚀 **[Live Demo →](https://arough007.github.io/qrcode-generator/)**
+
+Try the QR Code Generator now - no installation required!
+
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/arough007/qrcode-generator)
 [![WCAG 2.1 AA](https://img.shields.io/badge/WCAG-2.1%20AA-blue)](https://www.w3.org/WAI/WCAG21/quickref/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://arough007.github.io/qrcode-generator/)
 
 ## ✨ Features
 
@@ -95,4 +100,4 @@ We welcome contributions! Please see our [Contributing Guidelines](./DEVELOPMENT
 
 ---
 
-**[📚 View Complete Documentation](./DEVELOPMENT.md)** | **[🐛 Report Issues](https://github.com/arough007/qrcode-generator/issues)** | **[💡 Request Features](https://github.com/arough007/qrcode-generator/issues/new)**
+**[🚀 Live Demo](https://arough007.github.io/qrcode-generator/)** | **[📚 Complete Documentation](./DEVELOPMENT.md)** | **[🐛 Report Issues](https://github.com/arough007/qrcode-generator/issues)** | **[💡 Request Features](https://github.com/arough007/qrcode-generator/issues/new)**
