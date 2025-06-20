@@ -41,6 +41,9 @@ echo "⬇️  Pulling latest changes..."
 CURRENT_BRANCH=$(git branch --show-current)
 git pull origin "$CURRENT_BRANCH"
 
+# Ensure script is executable after git pull (permissions might be lost)
+chmod +x "$SCRIPT_PATH"
+
 # Check if this script was updated during the pull
 CURRENT_HASH=$(shasum "$SCRIPT_PATH" | cut -d' ' -f1)
 if [ "$INITIAL_HASH" != "$CURRENT_HASH" ]; then
