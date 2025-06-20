@@ -118,7 +118,7 @@ describe('Responsive Layout', () => {
     const textInput = screen.getByLabelText('Text or URL to encode:');
     await user.clear(textInput);
     await user.type(textInput, 'Test text');
-    
+
     // Wait for the input to be updated
     await waitFor(() => {
       expect(textInput).toHaveValue('Test text');
@@ -135,7 +135,7 @@ describe('Responsive Layout', () => {
     const firstNameInput = screen.getByLabelText('First Name:');
     await user.clear(firstNameInput);
     await user.type(firstNameInput, 'John');
-    
+
     // Wait for the input to be updated
     await waitFor(() => {
       expect(firstNameInput).toHaveValue('John');
@@ -145,7 +145,9 @@ describe('Responsive Layout', () => {
     await user.selectOptions(typeSelector, 'text');
 
     // Wait for text input to reappear and check value
-    const textInputAfter = await screen.findByLabelText('Text or URL to encode:');
+    const textInputAfter = await screen.findByLabelText(
+      'Text or URL to encode:'
+    );
     expect(textInputAfter).toHaveValue('Test text');
   });
 
