@@ -7,7 +7,7 @@ Modern React components with TypeScript, accessibility, and testing built-in.
 ### Core Components
 
 - **QRCodeGenerator** - Main orchestrator with state management
-- **QRTypeSelector** - Text/vCard mode switcher  
+- **QRTypeSelector** - Text/vCard mode switcher
 - **TextInput** - Text/URL input with debouncing
 - **VCardForm** - Contact form with grid layout
 - **ColorControls** - Color pickers + transparency
@@ -20,7 +20,7 @@ Modern React components with TypeScript, accessibility, and testing built-in.
 ## Custom Hooks
 
 - **useQRCode** - QR generation + canvas management + export logic
-- **useFormState** - Form state for text/vCard inputs with type safety  
+- **useFormState** - Form state for text/vCard inputs with type safety
 - **useModalFocus** - A11y focus management for modals (trap, restore, escape)
 
 ## Key Patterns
@@ -34,7 +34,8 @@ Modern React components with TypeScript, accessibility, and testing built-in.
 ## Testing
 
 All components tested with Vitest + React Testing Library:
-- Unit tests for individual components  
+
+- Unit tests for individual components
 - Integration tests for component interactions
 - Accessibility tests for ARIA/keyboard navigation
 - Responsive layout tests

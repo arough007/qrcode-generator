@@ -22,22 +22,22 @@ npm run dev  # Opens http://localhost:3000
 **QR Types**: Text/URL and vCard (contact info)  
 **Customization**: Colors, transparency, size (200-600px), error correction  
 **Export**: PNG, JPEG, SVG, PDF with smart naming  
-**Real-time**: 500ms debounced preview updates  
+**Real-time**: 500ms debounced preview updates
 
 See [Export Formats Guide](./EXPORT_FEATURES.md) for format details.
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `npm run dev` | Development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview build |
-| `npm run check` | **All checks** (types + format + tests) |
-| `npm run test:run` | Run tests once |
-| `npm run test:watch` | Tests in watch mode |
-| `npm run test:coverage` | Tests with coverage |
-| `npm run format` | Format with Prettier |
+| Command                 | Purpose                                 |
+| ----------------------- | --------------------------------------- |
+| `npm run dev`           | Development server                      |
+| `npm run build`         | Production build                        |
+| `npm run preview`       | Preview build                           |
+| `npm run check`         | **All checks** (types + format + tests) |
+| `npm run test:run`      | Run tests once                          |
+| `npm run test:watch`    | Tests in watch mode                     |
+| `npm run test:coverage` | Tests with coverage                     |
+| `npm run format`        | Format with Prettier                    |
 
 ## Testing
 
@@ -46,12 +46,12 @@ See [Export Formats Guide](./EXPORT_FEATURES.md) for format details.
 See [Test Summary](./src/test/test-summary.md) for detailed coverage.
 
 ```bash
-npm run test:run      # Run once  
+npm run test:run      # Run once
 npm run test:watch    # Watch mode
 npm run test:coverage # With coverage
 ```
 
-## Accessibility 
+## Accessibility
 
 **WCAG 2.1 AA compliant** with comprehensive a11y features:
 
