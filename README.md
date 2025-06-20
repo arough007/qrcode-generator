@@ -16,6 +16,7 @@ Try the QR Code Generator now - no installation required!
 ✅ **Completely Free** - No payment required  
 ✅ **No Registration** - Start generating QR codes immediately  
 ✅ **No Account Required** - Privacy-focused, no personal data collection  
+✅ **100% Client-Side** - All data processed locally in your browser, nothing sent to servers  
 ✅ **Open Source** - Transparent and community-driven
 
 ## ✨ Features
